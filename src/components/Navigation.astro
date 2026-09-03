@@ -1,0 +1,64 @@
+---
+const currentPath = Astro.url.pathname;
+
+const links = [
+  { href: "/", label: "TOP" },
+  { href: "/photos", label: "娃写真" },
+  { href: "/guides", label: "BJD教學" },
+  { href: "/diary", label: "日記" },
+  { href: "/links", label: "LINK" },
+];
+---
+
+<nav class="navigation" aria-label="主要導覽">
+  {
+    links.map((link, index) => {
+      const isActive =
+        link.href === "/"
+          ? currentPath === "/"
+          : currentPath.startsWith(link.href);
+
+      return (
+        <>
+          <a
+            href={link.href}
+            class:list={{ active: isActive }}
+          >
+            {link.label}
+          </a>
+
+          {index < links.length - 1 && (
+            <span class="separator"> | </span>
+          )}
+        </>
+      );
+    })
+  }
+</nav>
+
+<style>
+  .navigation {
+    margin: 12px 0 24px;
+    padding: 10px;
+    border-top: 1px solid #888;
+    border-bottom: 1px solid #888;
+    text-align: center;
+  }
+
+  .navigation a {
+    color: #0000ee;
+    text-decoration: underline;
+  }
+
+  .navigation a:visited {
+    color: #551a8b;
+  }
+
+  .navigation a.active {
+    font-weight: bold;
+  }
+
+  .separator {
+    margin: 0 4px;
+  }
+</style>

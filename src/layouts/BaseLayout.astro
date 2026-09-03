@@ -1,0 +1,105 @@
+import Navigation from "../components/Navigation.astro";
+---
+const {
+  title = "傑尼のBJD部屋",
+  description = "BJD、娃照、教學與日常紀錄",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+
+  <body>
+    <div class="site-shell">
+
+      <header class="site-header">
+        <h1>★ 傑尼のBJD部屋 ★</h1>
+        <p>いらっしゃいませ！</p>
+      </header>
+
+      <nav class="site-nav">
+        <a href="/">TOP</a>
+        <a href="/photos">娃写真</a>
+        <a href="/guides">BJD教學</a>
+        <a href="/diary">日記</a>
+        <a href="/links">LINK</a>
+      </nav>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer class="site-footer">
+        <hr />
+        <p>管理人：傑尼</p>
+        <p>Powered by 🦞</p>
+      </footer>
+
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  html {
+    min-height: 100%;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100%;
+    background: #fff;
+    color: #111;
+    font-family:
+      "MS PGothic",
+      "Microsoft JhengHei",
+      sans-serif;
+  }
+
+  .site-shell {
+    width: min(860px, calc(100% - 24px));
+    margin: 0 auto;
+  }
+
+  .site-header {
+    padding: 24px 0 12px;
+    text-align: center;
+  }
+
+  .site-header h1 {
+    margin: 0;
+  }
+
+  .site-nav {
+    margin: 12px 0 24px;
+    padding: 10px;
+    border-top: 1px solid #888;
+    border-bottom: 1px solid #888;
+    text-align: center;
+  }
+
+  .site-nav a {
+    margin: 0 5px;
+  }
+
+  main {
+    min-height: 60vh;
+  }
+
+  .site-footer {
+    margin-top: 40px;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>

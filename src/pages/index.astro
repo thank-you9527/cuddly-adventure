@@ -1,22 +1,23 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 import RetroWindow from "../components/RetroWindow.astro";
 ---
 
-<html lang="zh-TW">
-  <head>
-    <meta charset="UTF-8" />
-    <title>傑尼のBJD部屋</title>
-  </head>
+<BaseLayout title="傑尼のBJD部屋">
 
-  <body>
-    <RetroWindow title="QQ_EGG.txt">
-      <h1>★ 傑尼のBJD部屋 ★</h1>
-      <p>いらっしゃいませ！</p>
-      <p>Powered by 🦞</p>
-    </RetroWindow>
+  <RetroWindow title="What's_New.log">
+    <h2>◆ What's New ◆</h2>
 
-    <RetroWindow title="What's_New.log">
-      <p>2026/09/03 網站開張しました＼(^o^)／</p>
-    </RetroWindow>
-  </body>
-</html>
+    <p>
+      2026/09/03<br />
+      網站開張しました＼(^o^)／
+    </p>
+  </RetroWindow>
+
+  <RetroWindow title="管理人.txt">
+    <p>
+      BJD、娃照、奇怪東西與日常廢文。
+    </p>
+  </RetroWindow>
+
+</BaseLayout>
