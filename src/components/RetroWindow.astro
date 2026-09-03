@@ -1,0 +1,66 @@
+---
+const {
+  title = "Untitled.txt",
+  class: className = ""
+} = Astro.props;
+---
+
+<section class={`retro-window ${className}`}>
+  <div class="retro-titlebar">
+    <span class="retro-title">{title}</span>
+
+    <div class="retro-controls" aria-hidden="true">
+      <button tabindex="-1">_</button>
+      <button tabindex="-1">□</button>
+      <button tabindex="-1">×</button>
+    </div>
+  </div>
+
+  <div class="retro-content">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .retro-window {
+    width: min(720px, calc(100vw - 24px));
+    margin: 24px auto;
+    border: 2px solid #111;
+    background: #c0c0c0;
+    box-shadow: 4px 4px 0 #666;
+    font-family: "MS PGothic", "Microsoft JhengHei", sans-serif;
+  }
+
+  .retro-titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 32px;
+    padding-left: 10px;
+    background: #ff92c9;
+    border-bottom: 2px solid #111;
+  }
+
+  .retro-title {
+    font-weight: bold;
+  }
+
+  .retro-controls {
+    display: flex;
+    align-self: stretch;
+  }
+
+  .retro-controls button {
+    width: 30px;
+    border: 0;
+    border-left: 1px solid #111;
+    background: #d9d9d9;
+    font: inherit;
+    font-weight: bold;
+    cursor: default;
+  }
+
+  .retro-content {
+    padding: 18px;
+  }
+</style>
