@@ -133,3 +133,32 @@ img {
     width: calc(100% - 12px);
   }
 }
+
+/* ===== 不曉得是啥應該跟側邊欄有關 ===== */
+.page-columns {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 700px) {
+  .page-columns {
+    display: block;
+  }
+}
+
+.browser-badge {
+  padding: 8px;
+  text-align: center;
+  font-size: 11px;
+}
+
+.browser-badge img {
+  width: 64px;
+  height: auto;
+}

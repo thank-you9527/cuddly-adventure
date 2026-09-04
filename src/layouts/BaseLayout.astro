@@ -1,5 +1,5 @@
 ---
-import Navigation from "../components/Navigation.astro";
+import Sidebar from "../components/Sidebar.astro";
 import "../styles/global.css";
 
 const {
@@ -26,17 +26,13 @@ const {
         <p>いらっしゃいませ！</p>
       </header>
 
-      <nav class="site-nav">
-        <a href="/">TOP</a>
-        <a href="/photos">娃写真</a>
-        <a href="/guides">BJD教學</a>
-        <a href="/diary">日記</a>
-        <a href="/links">LINK</a>
-      </nav>
+<div class="page-columns">
+  <Sidebar />
 
-      <main>
-        <slot />
-      </main>
+  <main class="main-content">
+    <slot />
+  </main>
+</div>
 
       <footer class="site-footer">
         <hr />

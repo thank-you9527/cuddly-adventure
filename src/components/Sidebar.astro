@@ -1,0 +1,111 @@
+---
+import AdRotator from "./AdRotator.astro";
+---
+
+<aside class="sidebar">
+
+  <section class="side-box">
+    <div class="side-title">◆ MENU ◆</div>
+
+    <ul>
+      <li><a href="/">TOP</a></li>
+      <li><a href="/photos">娃写真</a></li>
+      <li><a href="/guides">BJD教學</a></li>
+      <li><a href="/diary">日記</a></li>
+      <li><a href="/links">LINK</a></li>
+    </ul>
+  </section>
+
+  <section class="side-box">
+    <div class="side-title">★ 管理人 ★</div>
+
+    <p>
+      名前：傑尼<br />
+      属性：社畜<br />
+      趣味：人形
+    </p>
+  </section>
+
+  <section class="side-box advertisement">
+   <div class="side-title">★ AD ★</div>
+
+   <AdRotator />
+  </section>
+
+  <section class="side-box counter">
+    <div class="side-title">あなたは</div>
+
+    <div class="counter-number">
+      001337
+    </div>
+
+    <div>人目のお客様です</div>
+  </section>
+  <section class="side-box browser-badge">
+   <img
+    src="/assets/icons/ie-old.png"
+    alt="Internet Explorer"
+   />
+
+   <p>
+     Best viewed with<br />
+     Internet Explorer<br />
+     800×600
+   </p>
+  </section>
+
+</aside>
+
+<style>
+  .sidebar {
+    width: 180px;
+    flex: 0 0 180px;
+    font-size: 14px;
+  }
+
+  .side-box {
+    margin-bottom: 14px;
+    border: 1px solid #111;
+    background: #eeeeee;
+  }
+
+  .side-title {
+    padding: 3px 6px;
+    border-bottom: 1px solid #111;
+    background: var(--titlebar-bg);
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .side-box p {
+    padding: 6px 8px;
+    margin: 0;
+  }
+
+  .side-box ul {
+    margin: 6px 0;
+    padding-left: 28px;
+  }
+
+  .counter {
+    padding-bottom: 8px;
+    text-align: center;
+  }
+
+  .counter-number {
+    display: inline-block;
+    margin: 7px 0 3px;
+    padding: 1px 5px;
+    background: #000;
+    color: #00ff00;
+    font-family: monospace;
+    letter-spacing: 2px;
+  }
+
+  @media (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      flex-basis: auto;
+    }
+  }
+</style>
