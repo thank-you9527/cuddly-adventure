@@ -1,5 +1,7 @@
-import Navigation from "../components/Navigation.astro";
 ---
+import Navigation from "../components/Navigation.astro";
+import "../styles/global.css";
+
 const {
   title = "傑尼のBJD部屋",
   description = "BJD、娃照、教學與日常紀錄",
@@ -46,60 +48,3 @@ const {
   </body>
 </html>
 
-<style is:global>
-  html {
-    min-height: 100%;
-  }
-
-  body {
-    margin: 0;
-    min-height: 100%;
-    background: #fff;
-    color: #111;
-    font-family:
-      "MS PGothic",
-      "Microsoft JhengHei",
-      sans-serif;
-  }
-
-  .site-shell {
-    width: min(860px, calc(100% - 24px));
-    margin: 0 auto;
-  }
-
-  .site-header {
-    padding: 24px 0 12px;
-    text-align: center;
-  }
-
-  .site-header h1 {
-    margin: 0;
-  }
-
-  .site-nav {
-    margin: 12px 0 24px;
-    padding: 10px;
-    border-top: 1px solid #888;
-    border-bottom: 1px solid #888;
-    text-align: center;
-  }
-
-  .site-nav a {
-    margin: 0 5px;
-  }
-
-  main {
-    min-height: 60vh;
-  }
-
-  .site-footer {
-    margin-top: 40px;
-    padding-bottom: 40px;
-    text-align: center;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-</style>

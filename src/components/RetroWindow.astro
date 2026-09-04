@@ -25,20 +25,21 @@ const {
   .retro-window {
     width: min(720px, calc(100vw - 24px));
     margin: 24px auto;
-    border: 2px solid #111;
-    background: #c0c0c0;
-    box-shadow: 4px 4px 0 #666;
-    font-family: "MS PGothic", "Microsoft JhengHei", sans-serif;
+    border: 2px solid var(--window-border);
+    background: var(--window-bg);
+    box-shadow: 4px 4px 0 var(--window-shadow);
+    font-family: var(--font-main);
   }
 
-  .retro-titlebar {
+   .retro-titlebar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     min-height: 32px;
     padding-left: 10px;
-    background: #ff92c9;
-    border-bottom: 2px solid #111;
+    color: var(--titlebar-text);
+    background: var(--titlebar-bg);
+    border-bottom: 2px solid var(--window-border);
   }
 
   .retro-title {

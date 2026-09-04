@@ -1,0 +1,135 @@
+/* =========================
+   傑尼のBJD部屋
+   全站大便控制台
+   ========================= */
+
+:root {
+  /* 網站 */
+  --site-bg-color: #ffd6e7;
+  --site-text-color: #111111;
+  --site-width: 860px;
+
+  /* Windows */
+  --window-bg: #eeeeee;
+  --window-border: #111111;
+  --window-shadow: #777777;
+
+  /* 標題列 */
+  --titlebar-bg: #ff92c9;
+  --titlebar-text: #111111;
+
+  /* 超連結 */
+  --link-color: #0000ee;
+  --visited-color: #551a8b;
+  --active-color: #ff0000;
+
+  /* 字體 */
+  --font-main:
+    "MS PGothic",
+    "Microsoft JhengHei",
+    Arial,
+    sans-serif;
+}
+
+/* ===== 整站 ===== */
+
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  color: var(--site-text-color);
+  background-color: var(--site-bg-color);
+
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* 等我們有醜背景圖再開
+
+body {
+  background-image: url("/assets/backgrounds/bg-main.gif");
+  background-repeat: repeat;
+}
+
+*/
+
+.site-shell {
+  width: min(
+    var(--site-width),
+    calc(100% - 24px)
+  );
+
+  margin: 0 auto;
+}
+
+/* ===== 網站頭 ===== */
+
+.site-header {
+  padding: 24px 0 12px;
+  text-align: center;
+}
+
+.site-header h1 {
+  margin: 0;
+}
+
+.site-header p {
+  margin: 4px 0;
+}
+
+/* ===== 主要內容 ===== */
+
+main {
+  min-height: 60vh;
+}
+
+/* ===== 連結 ===== */
+
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+a:visited {
+  color: var(--visited-color);
+}
+
+a:active {
+  color: var(--active-color);
+}
+
+/* ===== 圖片 ===== */
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== 頁尾 ===== */
+
+.site-footer {
+  margin-top: 40px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+/* ===== 小螢幕偷偷救一下 ===== */
+
+@media (max-width: 600px) {
+  :root {
+    --site-width: 100%;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  .site-shell {
+    width: calc(100% - 12px);
+  }
+}
