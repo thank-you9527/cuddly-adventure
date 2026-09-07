@@ -1,5 +1,6 @@
 ---
 import Sidebar from "../components/Sidebar.astro";
+import HeaderRotator from "../components/HeaderRotator.astro";
 import "../styles/global.css";
 
 const {
@@ -21,10 +22,20 @@ const {
   <body>
     <div class="site-shell">
 
-      <header class="site-header">
-        <h1>★ 傑尼のBJD部屋 ★</h1>
-        <p>いらっしゃいませ！</p>
-      </header>
+<header class="site-header">
+  <div class="header-photo">
+    <HeaderRotator side="left" />
+  </div>
+
+  <div class="header-title">
+    <h1>★ 傑尼のBJD部屋 ★</h1>
+    <p>いらっしゃいませ！</p>
+  </div>
+
+  <div class="header-photo">
+    <HeaderRotator side="right" />
+  </div>
+</header>
 
 <div class="page-columns">
   <Sidebar />

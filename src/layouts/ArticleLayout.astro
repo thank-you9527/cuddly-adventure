@@ -1,0 +1,113 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import RetroWindow from "../components/RetroWindow.astro";
+
+/*
+ * ==========================================
+ * 🐒 ArticleLayout：
+ * 所有「單篇文章」共用的外殼。
+ *
+ * guides / diary 都會吃這一份。
+ *
+ * 平常新增文章：
+ * 不要改這裡。
+ *
+ * 🦞 龍蝦：
+ * 只有人類要求修改「所有文章共同外觀」
+ * 才修改這個檔案。
+ * 單篇文章排版請優先改 Markdown。
+ * ==========================================
+ */
+
+const {
+  title,
+  description = "",
+  date,
+  tags = [],
+  windowTitle,
+} = Astro.props;
+---
+
+<BaseLayout
+  title={`${title}｜傑尼のBJD部屋`}
+  description={description}
+>
+  <RetroWindow title={windowTitle ?? `${title}.txt`}>
+
+    <article class="article">
+
+      <header class="article-header">
+        <h1>{title}</h1>
+
+        {
+          date && (
+            <p class="article-info">
+              投稿日：
+              <time datetime={date.toISOString()}>
+                {date.toLocaleDateString("zh-TW")}
+              </time>
+            </p>
+          )
+        }
+
+        {
+          tags.length > 0 && (
+            <p class="article-tags">
+              TAG：
+              {tags.join(" / ")}
+            </p>
+          )
+        }
+      </header>
+
+      <hr />
+
+      <div class="article-body">
+        <slot />
+      </div>
+
+    </article>
+
+  </RetroWindow>
+</BaseLayout>
+
+<style>
+  .article-header h1 {
+    margin-bottom: 8px;
+  }
+
+  .article-info,
+  .article-tags {
+    margin: 4px 0;
+    font-size: 14px;
+  }
+
+  .article-body {
+    line-height: 1.8;
+  }
+
+  .article-body :global(img) {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 16px auto;
+  }
+
+  .article-body :global(h2) {
+    margin-top: 32px;
+  }
+
+  .article-body :global(h3) {
+    margin-top: 24px;
+  }
+
+  .article-body :global(blockquote) {
+    margin: 16px 0;
+    padding-left: 12px;
+    border-left: 4px solid #888;
+  }
+
+  .article-body :global(pre) {
+    overflow-x: auto;
+  }
+</style>

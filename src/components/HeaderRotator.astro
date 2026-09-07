@@ -1,0 +1,128 @@
+---
+/*
+ * ============================================================
+ * 🐒 HeaderRotator
+ * ============================================================
+ *
+ * Header 娃照輪播。
+ *
+ * 用法：
+ *
+ * <HeaderRotator side="left" />
+ * <HeaderRotator side="right" />
+ *
+ * 【要新增圖片】
+ * 只修改下面的圖片陣列。
+ *
+ * 🦞：
+ * 單純新增／移除 Header 圖片時，
+ * 不要修改下面的輪播 JS。
+ *
+ * ============================================================
+ */
+
+const {
+  side = "left",
+} = Astro.props;
+
+const imageSets = {
+  left: [
+    "/assets/photos/header/header-left1.webp",
+    "/assets/photos/header/header-left2.webp",
+  ],
+
+  right: [
+    "/assets/photos/header/header-right1.webp",
+    "/assets/photos/header/header-right2.webp",
+  ],
+};
+
+const intervals = {
+  left: 4700,
+  right: 6100,
+};
+
+const images = imageSets[side] ?? imageSets.left;
+const interval = intervals[side] ?? 5000;
+---
+
+<div
+  class="header-rotator"
+  data-images={JSON.stringify(images)}
+  data-interval={interval}
+>
+  <img
+    src={images[0]}
+    alt=""
+    width="440"
+    height="220"
+  />
+</div>
+
+<script>
+  document.querySelectorAll(".header-rotator").forEach((rotator) => {
+    if (!(rotator instanceof HTMLElement)) return;
+
+    /*
+     * 防止 Astro 或其他情況讓同一個輪播被初始化兩次。
+     */
+    if (rotator.dataset.initialized === "true") return;
+
+    rotator.dataset.initialized = "true";
+
+    const rawImages = rotator.dataset.images;
+    const image = rotator.querySelector("img");
+
+    if (!rawImages || !(image instanceof HTMLImageElement)) return;
+
+    const images = JSON.parse(rawImages);
+
+    if (!Array.isArray(images) || images.length === 0) return;
+
+    /*
+     * 預先載入所有圖片。
+     */
+    images.forEach((src) => {
+      const preload = new Image();
+      preload.src = src;
+    });
+
+    /*
+     * 隨機起始圖片。
+     */
+    let current = Math.floor(Math.random() * images.length);
+
+    image.src = images[current];
+
+    if (images.length <= 1) return;
+
+    const interval = Number(rotator.dataset.interval) || 5000;
+
+    window.setInterval(() => {
+      current = (current + 1) % images.length;
+
+      /*
+       * 古早網站換圖技術：
+       *
+       * 啪。
+       */
+      image.src = images[current];
+    }, interval);
+  });
+</script>
+
+<style>
+  .header-rotator {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .header-rotator img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+</style>

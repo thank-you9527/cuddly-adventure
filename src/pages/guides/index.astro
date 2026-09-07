@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RetroWindow from "../../components/RetroWindow.astro";
+import { getCollection } from "astro:content";
+
+/*
+ * ==========================================
+ * 🐒 BJD教學文章列表
+ *
+ * 平常新增／刪除文章不用改這裡。
+ * 只要修改 src/content/guides/ 裡的 Markdown。
+ *
+ * 🦞：
+ * 單純發文時不要手動維護文章清單。
+ * ==========================================
+ */
+
+const guides = (await getCollection("guides"))
+  .filter((post) => !post.data.draft)
+  .sort(
+    (a, b) =>
+      b.data.date.getTime() - a.data.date.getTime()
+  );
+---
+
+<BaseLayout
+  title="BJD教學｜傑尼のBJD部屋"
+  description="BJD初心者教學與紀錄"
+>
+  <RetroWindow title="BJD_GUIDE.exe">
+
+    <h2>◆ BJD教學 ◆</h2>
+
+    <p>
+      猴子也看得懂的BJD教學。
+    </p>
+
+    <hr />
+
+    <ul class="article-list">
+      {
+        guides.map((post) => (
+          <li>
+            <time datetime={post.data.date.toISOString()}>
+              {post.data.date.toLocaleDateString("zh-TW")}
+            </time>
+
+            {" "}
+
+            <a href={`/guides/${post.id}/`}>
+              {post.data.title}
+            </a>
+
+            {post.data.description && (
+              <p>{post.data.description}</p>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+
+  </RetroWindow>
+</BaseLayout>
+
+<style>
+  .article-list li {
+    margin-bottom: 16px;
+  }
+
+  .article-list p {
+    margin: 2px 0 0;
+    font-size: 14px;
+  }
+
+  time {
+    font-family: monospace;
+  }
+</style>

@@ -1,0 +1,48 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import {
+  getCollection,
+  render,
+} from "astro:content";
+
+/*
+ * ==========================================
+ * 🐒 BJD教學單篇文章路由
+ *
+ * 平常新增文章不用改這裡。
+ * 只要往 src/content/guides/ 丟 Markdown。
+ *
+ * 🦞：
+ * 單純發文時不要修改這裡。
+ * ==========================================
+ */
+
+export async function getStaticPaths() {
+  const posts = await getCollection(
+    "guides",
+    ({ data }) => !data.draft
+  );
+
+  return posts.map((post) => ({
+    params: {
+      id: post.id,
+    },
+    props: {
+      post,
+    },
+  }));
+}
+
+const { post } = Astro.props;
+
+const { Content } = await render(post);
+---
+
+<ArticleLayout
+  title={post.data.title}
+  description={post.data.description}
+  date={post.data.date}
+  tags={post.data.tags}
+>
+  <Content />
+</ArticleLayout>
