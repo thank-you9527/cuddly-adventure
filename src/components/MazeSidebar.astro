@@ -1,0 +1,135 @@
+---
+const {
+  corruption = 0,
+} = Astro.props;
+---
+
+<aside class="maze-sidebar">
+
+  <section class="side-box">
+    <div class="side-title">◆ MENU ◆</div>
+
+    <ul>
+      <li><a href="/links/squirtle_maze/room-a/">TOP</a></li>
+      <li><a href="/links/squirtle_maze/room-b/">娃写真</a></li>
+      <li><a href="/links/squirtle_maze/not-found/">BJD教學</a></li>
+      <li><a href="/links/squirtle_maze/room-a/">日記</a></li>
+      <li><a href="/links/squirtle_maze/">LINK</a></li>
+    </ul>
+  </section>
+
+  <section class="side-box">
+    <div class="side-title">★ 管理人 ★</div>
+
+    <p>
+      名前：傑ニ<br />
+      属性：？？？<br />
+      趣味：人形
+    </p>
+  </section>
+
+  <section class="side-box ad">
+    <div class="side-title">★ AD ★</div>
+
+    <a href="/links/squirtle_maze/ads/winner/">
+      <strong class="blink">
+        ★★★ 当選しました ★★★
+      </strong>
+
+      <br />
+
+      9,999,999円<br />
+      今すぐCLICK!!
+    </a>
+  </section>
+
+  {corruption >= 2 && (
+    <section class="side-box ad">
+      <a href="/links/squirtle_maze/ads/secret/">
+        <span class="blink">
+          ◆◆ SECRET ◆◆
+        </span>
+        <br />
+        あなただけに公開
+      </a>
+    </section>
+  )}
+
+  {corruption >= 3 && (
+    <>
+      <section class="side-box ad">
+        <span class="blink">
+          あなたのPCは<br />
+          危険です!!
+        </span>
+      </section>
+
+      <section class="side-box ad">
+        <a href="/links/squirtle_maze/not-found/">
+          FREE<br />
+          FREE<br />
+          FREE
+        </a>
+      </section>
+    </>
+  )}
+
+</aside>
+
+<style>
+  .maze-sidebar {
+    width: 180px;
+    flex: 0 0 180px;
+  }
+
+  .side-box {
+    margin-bottom: 10px;
+    border: 1px solid #111;
+    background: #eee;
+  }
+
+  .side-title {
+    padding: 3px;
+    border-bottom: 1px solid #111;
+    background: #ff9fc8;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  ul {
+    padding-left: 28px;
+  }
+
+  p {
+    padding: 6px;
+  }
+
+  .ad {
+    padding: 8px 4px;
+    text-align: center;
+    background: #ffff00;
+    font-family: "Times New Roman", serif;
+    font-size: 13px;
+  }
+
+  /*
+   * 真正 blink 標籤早就死了。
+   * 我們用現代 CSS 復活它的冤魂。
+   */
+  .blink {
+    animation: blink 0.65s steps(1) infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      visibility: hidden;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .maze-sidebar {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  }
+</style>

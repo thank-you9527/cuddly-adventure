@@ -1,0 +1,198 @@
+---
+/*
+  ==========================================
+  💸 無收入廣告輪播系統 💸
+
+  🐒 未來傑尼新增廣告：
+  只需要在 ads 裡複製一組 { ... }。
+
+  title = 小標題
+  lines = 廣告正文，每個字串是一行
+  cta   = 最下面 CLICK HERE 那行
+  href  = 點下去真的會去哪裡
+  newTab = true 時開新分頁
+
+  不需要去改下面的 JavaScript。
+  ==========================================
+*/
+
+const ads = [
+  {
+    title: "＼初心者必見！／",
+    lines: [
+      "只要 ¥600！",
+      "擁有你的第一隻BJD",
+    ],
+    cta: "▶ CLICK HERE ◀",
+    href: "https://www.padico.co.jp/en/products/stone-clay/la-doll/",
+    newTab: true,
+  },
+
+  {
+    title: "＼錯過會後悔！／",
+    lines: [
+      "完全免費！",
+      "獲得你的第一隻BJD！",
+    ],
+    cta: "▶ 今すぐGET！ ◀",
+    href: "https://www.blender.org/",
+    newTab: true,
+  },
+
+  /*
+    🐒 新廣告範例：
+
+  {
+    title: "＼衝撃の事実！／",
+    lines: [
+      "廣告第一行",
+      "廣告第二行",
+    ],
+    cta: "▶ CLICK HERE ◀",
+    href: "https://example.com/",
+    newTab: true,
+  },
+
+  */
+];
+---
+
+<div
+  class="ad-rotator"
+  data-ads={JSON.stringify(ads)}
+>
+  <a
+    class="fake-ad"
+    href={ads[0].href}
+    target={ads[0].newTab ? "_blank" : undefined}
+    rel={ads[0].newTab ? "noopener noreferrer" : undefined}
+  >
+    <strong class="ad-title">
+      {ads[0].title}
+    </strong>
+
+    <span class="ad-lines">
+      {
+        ads[0].lines.map((line) => (
+          <span>{line}</span>
+        ))
+      }
+    </span>
+
+    <span class="ad-cta">
+      {ads[0].cta}
+    </span>
+  </a>
+</div>
+
+<script>
+  /*
+    🦞 給龍蝦：
+    除非要修改輪播機制，否則不要碰這裡。
+    廣告內容全部在檔案最上面的 ads。
+  */
+
+  const ROTATE_TIME = 5000;
+
+  document
+    .querySelectorAll(".ad-rotator")
+    .forEach((rotator) => {
+      if (!(rotator instanceof HTMLElement)) return;
+
+      const rawAds = rotator.dataset.ads;
+      const link = rotator.querySelector(".fake-ad");
+      const title = rotator.querySelector(".ad-title");
+      const lines = rotator.querySelector(".ad-lines");
+      const cta = rotator.querySelector(".ad-cta");
+
+      if (
+        !rawAds ||
+        !(link instanceof HTMLAnchorElement) ||
+        !title ||
+        !lines ||
+        !cta
+      ) {
+        return;
+      }
+
+      const ads = JSON.parse(rawAds);
+
+      if (!Array.isArray(ads) || ads.length <= 1) return;
+
+      let current = 0;
+
+      window.setInterval(() => {
+        current = (current + 1) % ads.length;
+
+        const ad = ads[current];
+
+        title.textContent = ad.title;
+        cta.textContent = ad.cta;
+
+        lines.replaceChildren();
+
+        ad.lines.forEach((text) => {
+          const line = document.createElement("span");
+          line.textContent = text;
+          lines.appendChild(line);
+        });
+
+        link.href = ad.href;
+
+        if (ad.newTab) {
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+        } else {
+          link.removeAttribute("target");
+          link.removeAttribute("rel");
+        }
+      }, ROTATE_TIME);
+    });
+</script>
+
+<style>
+  .ad-rotator {
+    width: 100%;
+  }
+
+  .fake-ad {
+    display: block;
+    box-sizing: border-box;
+    min-height: 105px;
+    padding: 8px 4px;
+
+    background: #ffff00;
+    color: #ff0000;
+
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .fake-ad:visited {
+    color: #ff0000;
+  }
+
+  .ad-title,
+  .ad-lines,
+  .ad-cta {
+    display: block;
+  }
+
+  .ad-title {
+    margin-bottom: 2px;
+    text-decoration: underline;
+  }
+
+  .ad-lines span {
+    display: block;
+    text-decoration: underline;
+  }
+
+  .ad-cta {
+    margin-top: 2px;
+    color: #0000ff;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+</style>

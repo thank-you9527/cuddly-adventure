@@ -1,0 +1,316 @@
+---
+import MazeLayout from "../../../../layouts/MazeLayout.astro";
+---
+
+<MazeLayout title="人形関連" corruption={1}>
+
+  <section class="doll-page">
+
+    <h2>★ 人形関連 ★</h2>
+
+    <p class="intro">
+      管理人が集めた人形関連の写真とメモです。<br />
+      画像をクリックすると大きい写真が見られます。
+    </p>
+
+    <hr />
+
+    <!-- =========================================
+         01：非常普通
+         之後可以放一張真的很普通的 BJD 照片。
+         點下去卻不一定真的看大圖。
+         ========================================= -->
+
+    <div class="doll-entry">
+      <h3>◆ ゴム交換 ◆</h3>
+
+      <a
+        class="image-link"
+        href="/links/squirtle_maze/room-b/"
+      >
+        <img
+          src="/assets/maze/cursed/doll_elastic.webp"
+          alt="人形のゴム交換"
+        />
+
+        <span class="missing-image">
+          [ doll_elastic.webp ]
+        </span>
+      </a>
+
+      <p>
+        古くなったテンションゴムを交換しました。<br />
+        思ったより簡単でした。
+      </p>
+
+      <p class="lobster-note">
+        🦞 note：<br />
+        拉筋用的彈力繩是白色的，不是紅色的。<br />
+        娃娃拆開來不會看到紅色的彈力繩。
+      </p>
+    </div>
+
+    <hr />
+
+    <!-- =========================================
+         02：開始有一點不對勁
+         ========================================= -->
+
+    <div class="doll-entry">
+      <h3>◆ 分解写真 ◆</h3>
+
+      <a
+        class="image-link"
+        href="/links/squirtle_maze/room-c/"
+      >
+        <img
+          src="/assets/maze/cursed/doll_parts.webp"
+          alt="分解した人形"
+        />
+
+        <span class="missing-image">
+          [ doll_parts.webp ]
+        </span>
+      </a>
+
+      <p>
+        メンテナンスのため全部外しました。<br />
+        パーツをなくさないよう注意。
+      </p>
+
+      <p class="old-comment">
+        ※ 写真は以前のものです。
+      </p>
+    </div>
+
+    <hr />
+
+    <!-- =========================================
+         03：內容還能解釋，連結開始不能解釋
+         ========================================= -->
+
+    <div class="doll-entry">
+      <h3>◆ アイ交換 ◆</h3>
+
+      <a
+        class="image-link"
+        href="/links/squirtle_maze/not-found/"
+      >
+        <img
+          src="/assets/maze/cursed/doll_eye.webp"
+          alt="人形の目"
+        />
+
+        <span class="missing-image">
+          [ doll_eye.webp ]
+        </span>
+      </a>
+
+      <p>
+        グラスアイを交換しました。<br />
+        光の入り方がきれいです。
+      </p>
+
+      <p class="tiny">
+        以前の目はどこに置いたか覚えていません。
+      </p>
+    </div>
+
+    <hr />
+
+    <!-- =========================================
+         04：無關大便。
+         龍蝦。
+         ========================================= -->
+
+    <div class="doll-entry">
+      <h3>◆ その他 ◆</h3>
+
+      <a
+        class="image-link lobster-link"
+        href="/links/squirtle_maze/room-d/"
+      >
+        <img
+          src="/assets/maze/cursed/lobster_bg.webp"
+          alt="その他"
+        />
+      </a>
+
+      <p>
+        人形とは関係ありません。
+      </p>
+    </div>
+
+    <hr />
+
+    <p class="old-update">
+      最終更新：200?/??/??
+    </p>
+
+  </section>
+
+</MazeLayout>
+
+
+<script>
+  /*
+   * 圖片還沒做的時候：
+   * img 讀取失敗 → 顯示古老網站式缺圖文字。
+   *
+   * 之後只要把同名圖片放進
+   * public/assets/maze/cursed/
+   * 不用再改 HTML。
+   */
+  document.querySelectorAll(".image-link").forEach((link) => {
+    const image = link.querySelector("img");
+    const missing = link.querySelector(".missing-image");
+
+    if (!(image instanceof HTMLImageElement)) return;
+
+    image.addEventListener("load", () => {
+      if (missing instanceof HTMLElement) {
+        missing.hidden = true;
+      }
+    });
+
+    image.addEventListener("error", () => {
+      image.hidden = true;
+
+      if (missing instanceof HTMLElement) {
+        missing.hidden = false;
+      }
+    });
+  });
+</script>
+
+
+<style>
+  .doll-page {
+    line-height: 1.65;
+  }
+
+  .doll-page h2 {
+    text-align: center;
+  }
+
+  .intro {
+    text-align: center;
+  }
+
+  .doll-entry {
+    padding: 12px 4px;
+  }
+
+  .doll-entry h3 {
+    margin-top: 0;
+  }
+
+  /*
+   * 古早照片框。
+   */
+  .image-link {
+    position: relative;
+
+    display: block;
+
+    width: min(360px, 90%);
+    min-height: 170px;
+
+    margin: 16px auto;
+
+    border:
+      3px
+      ridge
+      #bbb;
+
+    background:
+      #d8d8d8;
+
+    text-align: center;
+
+    color: #0000ee;
+  }
+
+  .image-link img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    image-rendering: auto;
+  }
+
+  /*
+   * 還沒塞圖片時就讓它看起來像
+   * 一個真的死掉很久的個人網站。
+   */
+  .missing-image {
+    display: grid;
+
+    min-height: 170px;
+
+    place-items: center;
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    font-size: 12px;
+
+    color: #555;
+  }
+
+  .lobster-link {
+    width: min(260px, 80%);
+  }
+
+  /*
+   * 龍蝦備忘：
+   * 像是網站管理員自己留下的工程備註，
+   * 目前先不要太恐怖。
+   */
+  .lobster-note {
+    width: min(500px, 95%);
+
+    margin: 20px auto;
+
+    padding: 7px 9px;
+
+    border:
+      1px
+      dashed
+      #888;
+
+    background:
+      #ffffcc;
+
+    font-family:
+      monospace;
+
+    font-size: 12px;
+  }
+
+  .old-comment {
+    color: #777;
+    font-size: 11px;
+  }
+
+  .tiny {
+    margin-top: 28px;
+
+    color: #888;
+
+    font-size: 10px;
+  }
+
+  .old-update {
+    text-align: right;
+
+    color: #777;
+
+    font-family:
+      monospace;
+
+    font-size: 10px;
+  }
+</style>

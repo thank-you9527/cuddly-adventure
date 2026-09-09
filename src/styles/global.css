@@ -192,3 +192,25 @@ img {
   width: 64px;
   height: auto;
 }
+
+/* ===== 字體相關 ===== */
+
+body {
+  font-family:
+    "MS Gothic",
+    "ＭＳ ゴシック",
+    "Courier New",
+    monospace;
+}
+
+h1,
+h2,
+h3,
+.side-title {
+  font-weight: bold;
+}
+
+.retro-text {
+  text-shadow: 1px 0 0 currentColor;
+}
+

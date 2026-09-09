@@ -1,0 +1,194 @@
+---
+import MazeSidebar from "../components/MazeSidebar.astro";
+import MazeAbyss from "../components/MazeAbyss.astro";
+const {
+  title = "傑尼のBJD部屋",
+  corruption = 0,
+} = Astro.props;
+/*
+ * corruption：
+ * 0 = 看起來幾乎正常
+ * 1 = 開始有垃圾
+ * 2 = 明顯不對勁
+ * 3 = 網路化糞池
+ *
+ * 🦞 注意：
+ * 這些醜陋、錯誤感、奇怪連結均為刻意設計。
+ * 不要擅自「改善 UX」。
+ */
+---
+
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+   <script is:inline>
+     const poopFonts = [
+       "serif",
+       "sans-serif",
+       "monospace",
+       "cursive",
+       "fantasy",
+       "system-ui"
+     ];
+
+     const poopFont =
+       poopFonts[Math.floor(Math.random() * poopFonts.length)];
+
+     document.documentElement.style.setProperty(
+       "--poop-font",
+       poopFont
+     );
+   </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- 不讓迷宮污染正常搜尋結果 -->
+    <meta name="robots" content="noindex, nofollow" />
+
+    <title>{title}</title>
+  </head>
+
+  <body class={`corruption-${corruption}`}>
+    <div class="maze-shell">
+
+      <header class="maze-header">
+        <div class="broken-photo">
+          IMAGE
+        </div>
+
+        <div class="maze-title">
+          <h1>★ 傑ニのBJD部屋 ★</h1>
+          <p>いらっしゃいませ！</p>
+        </div>
+
+        <div class="broken-photo">
+          IMAGE
+        </div>
+      </header>
+
+      <div class="maze-columns">
+
+        <MazeSidebar corruption={corruption} />
+
+        <main class="maze-content">
+          <slot />
+        </main>
+
+      </div>
+
+      <footer>
+        <hr />
+        <p>管理人：傑ニ</p>
+        <p>Last Update：200?</p>
+      </footer>
+
+    </div>
+   <MazeAbyss />
+  </body>
+</html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(body) {
+    margin: 0;
+    background: #ffd6e7;
+    color: #111;
+    font-family:
+      "MS PGothic",
+      "MS Gothic",
+      Arial,
+      sans-serif;
+    font-size: 14px;
+  }
+
+  .maze-shell {
+    width: min(1100px, calc(100% - 20px));
+    margin: 0 auto;
+  }
+
+  .maze-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 20px;
+    align-items: center;
+    padding: 18px 0;
+  }
+
+  .maze-title {
+    text-align: center;
+  }
+
+  .maze-title h1 {
+    margin: 0;
+  }
+
+  .maze-title p {
+    margin: 4px 0 0;
+  }
+
+  .broken-photo {
+    height: 110px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #888;
+    background: #eee;
+    color: #888;
+    font-family: serif;
+    font-size: 11px;
+  }
+
+  .maze-columns {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .maze-content {
+    min-width: 0;
+    flex: 1;
+    padding: 10px;
+    border: 2px outset #ddd;
+    background: #eee;
+  }
+:global(body) {
+  font-family: var(--poop-font, serif);
+
+  /*
+   * 腐化等級 2 開始有點不舒服。
+   */
+  :global(.corruption-2) {
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        #ffd6e7 0,
+        #ffd6e7 8px,
+        #ffc3dc 8px,
+        #ffc3dc 9px
+      );
+  }
+
+  /*
+   * 等級 3 故意更擠。
+   * 真正的 GIF 背景之後再塞。
+   */
+  :global(.corruption-3 .maze-content) {
+    border-width: 4px;
+  }
+
+  @media (max-width: 700px) {
+    .maze-header {
+      grid-template-columns: 1fr;
+    }
+
+    .broken-photo {
+      display: none;
+    }
+
+    .maze-columns {
+      display: block;
+    }
+  }
+</style>

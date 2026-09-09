@@ -1,0 +1,356 @@
+---
+/*
+ * ==========================================
+ * 🦞 SQUIRTLE MAZE - BOTTOM ABYSS
+ *
+ * 只有 MazeLayout 使用。
+ * 正常網站禁止引用。
+ *
+ * 功能：
+ * - 主內容結束後留一段不自然的空白
+ * - 背景逐漸變暗
+ * - 浮出氣泡與奇怪裝飾
+ * - 最底部出現超寫實龍蝦
+ * - 點擊會冒出小東西
+ * ==========================================
+ */
+---
+
+<section class="maze-abyss">
+
+  <!-- 前面故意先什麼都沒有 -->
+  <div class="dead-space"></div>
+
+  <!-- 開始出現一些不對勁 -->
+  <div class="abyss-decorations" aria-hidden="true">
+    <span class="bubble bubble-1">🫧</span>
+    <span class="bubble bubble-2">🫧</span>
+    <span class="bubble bubble-3">🫧</span>
+    <span class="bubble bubble-4">°</span>
+    <span class="bubble bubble-5">○</span>
+    <span class="bubble bubble-6">🫧</span>
+
+    <!--
+      以後古老 GIF 可以直接塞在這裡，例如：
+
+      <img
+        class="poop-gif gif-1"
+        src="/assets/maze/gifs/sparkle.gif"
+        alt=""
+      />
+
+      <img
+        class="poop-gif gif-2"
+        src="/assets/maze/gifs/new.gif"
+        alt=""
+      />
+    -->
+  </div>
+
+  <div class="abyss-message">
+    <small>..........</small>
+  </div>
+
+  <footer class="abyss-footer">
+    <p>管理人：傑ニ</p>
+    <p>Last Update：200?</p>
+  </footer>
+
+  <!-- 網頁真正的最底 -->
+  <div class="lobster-zone">
+    <img
+      src="/assets/maze/cursed/lobster_bg.webp"
+      alt=""
+      class="lobster"
+    />
+  </div>
+
+</section>
+
+<script is:inline>
+  /*
+   * 點擊特效。
+   *
+   * 大部分只是氣泡。
+   * 少數會冒出龍蝦或毫無意義的小字。
+   */
+  document.addEventListener("click", (event) => {
+    const choices = [
+      "🫧",
+      "🫧",
+      "🫧",
+      "○",
+      "°",
+      "🦞",
+      "咕嚕",
+      "..."
+    ];
+
+    const particle = document.createElement("span");
+
+    particle.className = "maze-click-poop";
+
+    particle.textContent =
+      choices[Math.floor(Math.random() * choices.length)];
+
+    particle.style.left = `${event.clientX}px`;
+    particle.style.top = `${event.clientY}px`;
+
+    document.body.appendChild(particle);
+
+    window.setTimeout(() => {
+      particle.remove();
+    }, 1200);
+  });
+</script>
+
+<style>
+  /*
+   * 整個深淵。
+   *
+   * 背景色本身漸變，
+   * 不修改 body 的背景圖片。
+   */
+  .maze-abyss {
+    position: relative;
+    width: 100%;
+    min-height: 1000px;
+    margin-top: 20px;
+    overflow: hidden;
+
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(255, 214, 231, 0) 0%,
+        rgba(230, 180, 205, 0.15) 15%,
+        rgba(150, 105, 135, 0.45) 38%,
+        rgba(75, 45, 67, 0.75) 65%,
+        rgba(22, 15, 22, 0.96) 88%,
+        #080608 100%
+      );
+  }
+
+  /*
+   * 最後一個文章框下面，
+   * 故意先留很大一段什麼都沒有。
+   *
+   * 讓人產生：
+   * 「下面是不是還有東西？」
+   */
+  .dead-space {
+    height: 260px;
+  }
+
+  .abyss-decorations {
+    position: relative;
+    height: 300px;
+    pointer-events: none;
+  }
+
+  .bubble {
+    position: absolute;
+
+    opacity: 0.65;
+
+    animation:
+      bubble-float 3.5s ease-in-out infinite,
+      bubble-blink 1.8s steps(1) infinite;
+
+    user-select: none;
+  }
+
+  .bubble-1 {
+    left: 8%;
+    top: 180px;
+    font-size: 15px;
+  }
+
+  .bubble-2 {
+    left: 24%;
+    top: 80px;
+    font-size: 24px;
+    animation-delay: -1.2s;
+  }
+
+  .bubble-3 {
+    left: 52%;
+    top: 210px;
+    font-size: 18px;
+    animation-delay: -0.5s;
+  }
+
+  .bubble-4 {
+    right: 27%;
+    top: 120px;
+    font-size: 27px;
+    animation-delay: -2s;
+  }
+
+  .bubble-5 {
+    right: 12%;
+    top: 240px;
+    font-size: 12px;
+  }
+
+  .bubble-6 {
+    right: 4%;
+    top: 40px;
+    font-size: 20px;
+    animation-delay: -1.6s;
+  }
+
+  @keyframes bubble-float {
+    0%,
+    100% {
+      transform: translateY(10px);
+    }
+
+    50% {
+      transform: translateY(-18px);
+    }
+  }
+
+  @keyframes bubble-blink {
+    0%,
+    75% {
+      visibility: visible;
+    }
+
+    76%,
+    100% {
+      visibility: hidden;
+    }
+  }
+
+  /*
+   * 以後 GIF 用。
+   */
+  .poop-gif {
+    position: absolute;
+    image-rendering: pixelated;
+  }
+
+  .gif-1 {
+    left: 15%;
+    top: 100px;
+  }
+
+  .gif-2 {
+    right: 18%;
+    top: 200px;
+  }
+
+  .abyss-message {
+    height: 160px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: rgba(255, 255, 255, 0.35);
+
+    font-family: monospace;
+  }
+
+  .abyss-footer {
+    position: relative;
+    z-index: 2;
+
+    padding: 30px 0 10px;
+
+    color: #bbb;
+
+    text-align: center;
+    font-size: 11px;
+  }
+
+  /*
+   * 龍蝦區沒有下方 padding。
+   *
+   * 圖片底邊 = HTML 最底。
+   */
+  .lobster-zone {
+    position: relative;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    line-height: 0;
+
+    text-align: center;
+  }
+
+  .lobster {
+    display: block;
+
+    width: min(850px, 100%);
+    height: auto;
+
+    margin: 0 auto;
+
+    user-select: none;
+    pointer-events: none;
+  }
+
+  /*
+   * 點擊屎。
+   *
+   * fixed 是因為座標使用 clientX / clientY。
+   */
+  :global(.maze-click-poop) {
+    position: fixed;
+    z-index: 99999;
+
+    pointer-events: none;
+    user-select: none;
+
+    font-family: monospace;
+    font-size: 15px;
+
+    transform: translate(-50%, -50%);
+
+    animation: click-poop-die 1.2s ease-out forwards;
+  }
+
+  @keyframes click-poop-die {
+    0% {
+      opacity: 1;
+      transform:
+        translate(-50%, -50%)
+        translateY(0)
+        scale(1);
+    }
+
+    100% {
+      opacity: 0;
+      transform:
+        translate(-50%, -50%)
+        translateY(-45px)
+        scale(0.6);
+    }
+  }
+
+  @media (max-width: 700px) {
+    .dead-space {
+      height: 200px;
+    }
+
+    .maze-abyss {
+      min-height: 850px;
+    }
+  }
+
+  /*
+   * 尊重使用者「減少動態效果」設定。
+   *
+   * 深淵還在，只是不抽搐。
+   */
+  @media (prefers-reduced-motion: reduce) {
+    .bubble,
+    :global(.maze-click-poop) {
+      animation: none;
+    }
+  }
+</style>
