@@ -1,0 +1,520 @@
+---
+import MazeLayout from "../../../../layouts/MazeLayout.astro";
+---
+
+<MazeLayout title="分解写真" corruption={2}>
+
+  <div class="infected-page">
+
+    <!-- ==============================
+         左側垃圾廣告
+         ============================== -->
+    <aside class="ad-rail ad-left" aria-label="広告">
+
+      <a
+        class="trash-ad neon-a"
+        href="/assets/maze/cursed/big_black_cock.webp"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <strong>❤ WANT MY BBC? ❤</strong>
+        <span>想不想看我的</span>
+        <span class="huge">BIG BLACK COCK?</span>
+        <span>今すぐCLICK!!!</span>
+      </a>
+
+      <div class="gif-hole">
+        AD GIF<br />
+        120×60
+      </div>
+
+      <a
+        class="trash-ad neon-b"
+        href="/assets/maze/cursed/mother_hen.webp"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <strong>附近寂寞的媽媽</strong>
+        <span>正在等待你...</span>
+        <span>🐔❤ CLICK ❤🐔</span>
+      </a>
+
+      <div class="gif-hole">
+        FREE GIF<br />
+        88×31
+      </div>
+
+    </aside>
+
+
+    <!-- ==============================
+         中間：其實很正經的 BJD 教學
+         ============================== -->
+    <article class="real-content">
+
+      <p class="breadcrumb">
+        人形関連 ＞ メンテナンス ＞ 分解写真
+      </p>
+
+      <h2>◆ 人形を分解するときの注意 ◆</h2>
+
+      <p>
+        ゴム交換やメンテナンスのために人形を分解するときは、
+        外したパーツの位置が分からなくならないよう注意します。
+      </p>
+
+      <div class="parts-photo">
+        <img
+          src="/assets/maze/cursed/bjd_parts.webp"
+          alt="分解したBJDのパーツ"
+        />
+
+        <span class="missing-photo">
+          [ bjd_parts.webp ]
+        </span>
+      </div>
+
+      <h3>★ 左右のパーツを分ける ★</h3>
+
+      <p>
+        腕や脚など左右に分かれているパーツは、
+        分解した時点で左右別々に並べておくと安心です。
+      </p>
+
+      <p>
+        外見がよく似ていても、
+        関節の形状や可動範囲が左右で異なる場合があります。
+        写真を撮りながら作業すると、
+        組み立てるときの参考にもなります。
+      </p>
+
+      <h3>★ 小さい部品に注意 ★</h3>
+
+      <p>
+        Sカンや金属パーツなどは紛失しやすいため、
+        小皿やケースにまとめて保管します。
+      </p>
+
+      <p>
+        パーツを無理に引っ張らず、
+        ゴムのテンションを緩めてから作業してください。
+      </p>
+
+
+      <!--
+        ==========================================
+
+        管理人備註。
+        本來應該藏在 HTML comment 裡。
+
+        但管理員把註解符號打錯了，
+        所以底下整坨直接露在網頁上。
+
+        真正的 HTML comment 到這裡結束。
+        ==========================================
+      -->
+
+      <section class="broken-comment">
+
+        <p>&lt;-- 管理人備註　之後刪掉 --&gt;</p>
+
+        <p>
+          幹我又把左右手臂混在一起了，到底哪個是哪個
+        </p>
+
+        <p>
+          左手好像比較短？可是我不記得原本是不是這樣
+        </p>
+
+        <p>
+          下次拆之前先拿兩個盒子寫左右，不要再全部丟桌上
+        </p>
+
+        <p>
+          還有昨天明明把零件全部收到盒子裡了，
+          今天桌上怎麼又有一隻手
+        </p>
+
+        <p>
+          算了可能漏掉了
+        </p>
+
+        <p>&lt;-- /管理人備註 --&gt;</p>
+
+      </section>
+
+
+      <p class="update">
+        最終更新：200?/??/??
+      </p>
+
+      <p>
+        <a href="/links/squirtle_maze/room-a/">
+          ← 人形関連
+        </a>
+      </p>
+
+    </article>
+
+
+    <!-- ==============================
+         右側垃圾廣告
+         ============================== -->
+    <aside class="ad-rail ad-right" aria-label="広告">
+
+      <a
+        class="trash-ad neon-c"
+        href="/assets/maze/cursed/wet_pussy.webp"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <strong>💋💋 HOT!!! 💋💋</strong>
+        <span>溼答答的小</span>
+        <span class="huge">PUSSY</span>
+        <span>就在這裡❤</span>
+        <span>18+ CLICK!</span>
+      </a>
+
+      <div class="gif-hole">
+        CLICK<br />
+        HERE!!!
+      </div>
+
+      <div class="trash-ad neon-d">
+        <strong>★★★ WARNING ★★★</strong>
+        <span>あなたのPCは</span>
+        <span>危険です!!</span>
+        <span>今すぐ修復</span>
+      </div>
+
+      <div class="gif-hole">
+        GIF<br />
+        準備中
+      </div>
+
+    </aside>
+
+  </div>
+
+</MazeLayout>
+
+
+<script>
+  /*
+   * 圖片還沒做好時顯示古早缺圖框。
+   */
+  const photo = document.querySelector(".parts-photo img");
+  const missing = document.querySelector(".missing-photo");
+
+  if (photo instanceof HTMLImageElement) {
+    photo.addEventListener("load", () => {
+      if (missing instanceof HTMLElement) {
+        missing.hidden = true;
+      }
+    });
+
+    photo.addEventListener("error", () => {
+      photo.hidden = true;
+
+      if (missing instanceof HTMLElement) {
+        missing.hidden = false;
+      }
+    });
+  }
+</script>
+
+
+<style>
+  /*
+   * 整頁故意超出正常內容框。
+   * 中間仍然保持可讀。
+   */
+  .infected-page {
+    display: grid;
+
+    grid-template-columns:
+      135px
+      minmax(0, 1fr)
+      135px;
+
+    gap: 8px;
+
+    align-items: start;
+  }
+
+  .real-content {
+    min-width: 0;
+
+    padding: 8px;
+
+    line-height: 1.7;
+  }
+
+  .real-content h2 {
+    text-align: center;
+  }
+
+  .breadcrumb {
+    color: #666;
+
+    font-size: 11px;
+  }
+
+
+  /* ==============================
+     BJD 圖片
+     ============================== */
+
+  .parts-photo {
+    display: grid;
+
+    width: min(520px, 95%);
+    min-height: 260px;
+
+    margin: 24px auto;
+
+    border: 3px ridge #bbb;
+
+    place-items: center;
+
+    background: #ccc;
+  }
+
+  .parts-photo img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+  }
+
+  .missing-photo {
+    padding: 80px 10px;
+
+    color: #555;
+
+    font-family: monospace;
+    font-size: 12px;
+
+    text-align: center;
+  }
+
+
+  /* ==============================
+     打錯註解所以全部露出來
+     ============================== */
+
+  .broken-comment {
+    margin: 45px 0 25px;
+
+    padding: 7px 10px;
+
+    border-left: 2px solid #aaa;
+
+    color: #777;
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    font-size: 11px;
+  }
+
+  .broken-comment p {
+    margin: 5px 0;
+  }
+
+  .update {
+    margin-top: 35px;
+
+    color: #888;
+
+    font-size: 10px;
+
+    text-align: right;
+  }
+
+
+  /* ==============================
+     ✨ 精神污染區 ✨
+     ============================== */
+
+  .ad-rail {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+  }
+
+  .trash-ad {
+    display: flex;
+
+    min-height: 90px;
+
+    padding: 5px 2px;
+
+    border:
+      3px
+      outset
+      #ddd;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    font-family:
+      Arial,
+      sans-serif;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    text-decoration: underline;
+
+    animation:
+      ad-colors
+      0.55s
+      steps(1)
+      infinite;
+  }
+
+  .trash-ad .huge {
+    font-size: 16px;
+  }
+
+  /*
+   * 每個廣告故意不同步，
+   * 避免整齊得像現代網站。
+   */
+
+  .neon-b {
+    animation-delay: -0.21s;
+  }
+
+  .neon-c {
+    animation-delay: -0.37s;
+  }
+
+  .neon-d {
+    animation-delay: -0.13s;
+  }
+
+  @keyframes ad-colors {
+    0% {
+      background: #ffff00;
+      color: #ff0000;
+    }
+
+    25% {
+      background: #ff00ff;
+      color: #00ff00;
+    }
+
+    50% {
+      background: #00ffff;
+      color: #0000ff;
+    }
+
+    75% {
+      background: #000000;
+      color: #ffff00;
+    }
+  }
+
+
+  /*
+   * GIF 還沒生之前先留坑。
+   */
+
+  .gif-hole {
+    display: grid;
+
+    min-height: 60px;
+
+    border: 2px dashed #ff00ff;
+
+    place-items: center;
+
+    background: #000;
+
+    color: #00ff00;
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    font-size: 11px;
+
+    text-align: center;
+
+    animation:
+      gif-hole-blink
+      0.8s
+      steps(1)
+      infinite;
+  }
+
+  @keyframes gif-hole-blink {
+    50% {
+      color: #ff00ff;
+      background: #ffff00;
+    }
+  }
+
+
+  /*
+   * 手機上左右兩條垃圾不要把正文壓死。
+   *
+   * 改成：
+   * 左垃圾
+   * 正文
+   * 右垃圾
+   */
+
+  @media (max-width: 800px) {
+    .infected-page {
+      display: flex;
+
+      flex-direction: column;
+    }
+
+    .real-content {
+      order: 1;
+    }
+
+    .ad-left {
+      order: 2;
+    }
+
+    .ad-right {
+      order: 3;
+    }
+
+    .ad-rail {
+      display: grid;
+
+      width: 100%;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    }
+  }
+
+
+  /*
+   * 如果訪客要求減少動畫，
+   * 精神污染還在，但不要真的把人眼睛炸掉。
+   */
+
+  @media (prefers-reduced-motion: reduce) {
+    .trash-ad,
+    .gif-hole {
+      animation: none;
+    }
+  }
+</style>

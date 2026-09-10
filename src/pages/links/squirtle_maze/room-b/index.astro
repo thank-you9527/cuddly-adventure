@@ -1,33 +1,241 @@
 ---
-import MazeLayout from "../../../layouts/MazeLayout.astro";
+import MazeLayout from "../../../../layouts/MazeLayout.astro";
 ---
 
-<MazeLayout title="MORE LINK">
-  <center>
-    <h2>★ MORE LINK ★</h2>
+<MazeLayout title="ゴム交換" corruption={1}>
+
+  <section class="elastic-page">
+
+    <p class="breadcrumb">
+      人形関連 ＞ メンテナンス ＞ ゴム交換
+    </p>
+
+    <h2>◆ テンションゴムの選び方 ◆</h2>
 
     <p>
-      ここにはもっとたくさんのLINKがあります。
+      BJDのテンションゴムは、
+      人形の大きさだけではなく、
+      手足や関節内部のスペースを確認して選びます。
     </p>
 
     <p>
-      <a href="/links/maze/room-a/">人形関連</a>
+      太すぎるゴムはパーツ内部を通らなかったり、
+      関節内部で引っかかることがあります。
+      逆に細すぎるものはテンションが不足し、
+      ポーズを保持しにくくなることがあります。
+    </p>
+
+    <h3>★ 太さについて</h3>
+
+    <p>
+      まず手・足・腕・脚など、
+      ゴムが通る穴の大きさを確認します。
     </p>
 
     <p>
-      <a href="/links/maze/room-b/">個人サイト</a>
+      一番狭い部分を無理なく通る太さを基準にして、
+      人形全体の重量や必要なテンションに合わせて調整します。
+    </p>
+
+    <table class="old-table">
+      <tr>
+        <th>サイズ</th>
+        <th>ゴムの太さ</th>
+        <th>メモ</th>
+      </tr>
+
+      <tr>
+        <td>小型</td>
+        <td>？ mm</td>
+        <td>後で追記</td>
+      </tr>
+
+      <tr>
+        <td>中型</td>
+        <td>？ mm</td>
+        <td>後で測る</td>
+      </tr>
+
+      <tr>
+        <td>大型</td>
+        <td>？ mm</td>
+        <td>手足内部の穴を要確認</td>
+      </tr>
+    </table>
+
+    <p class="normal-note">
+      ※ メーカーや構造によって適切な太さは異なります。<br />
+      ※ 確切的粗細數值之後補。
+    </p>
+
+    <hr />
+
+    <h3>★ 交換するときの注意 ★</h3>
+
+    <p>
+      古いゴムを外す前に、
+      人形内部でどのように通っているか
+      写真を撮っておくと安心です。
     </p>
 
     <p>
-      <a href="/links/maze/room-c/">その他</a>
+      左右のパーツを混ぜないように並べ、
+      Sカンなどの小さい部品もなくさないようにします。
     </p>
-
-    <br /><br /><br />
 
     <p>
-      <small>
-        <a href="/">HOME</a>
-      </small>
+      ゴムは無理に引っ張らず、
+      パーツの穴に引っかかっていないか確認しながら通します。
     </p>
-  </center>
+
+
+    <!-- ========================================
+         到這裡都是普通 BJD 教學。
+         下面開始有一咪咪不對。
+         ======================================== -->
+
+    <div class="lobster-note">
+
+      <strong>🦞 note：</strong>
+
+      <p>
+        手邊有的零件很大、但穿不過彈力繩。
+      </p>
+
+      <p>
+        摸了還有沒乾透的紅漆。
+      </p>
+
+      <p>
+        模型漆要等乾透了才能噴塗下一層啦。
+      </p>
+
+    </div>
+
+    <p class="edit-note">
+      追記：このゴムは使いませんでした。
+    </p>
+
+
+    <!--
+      第一個非常小的世界觀線索。
+
+      不解釋。
+      不標紅。
+      不恐怖字體。
+      就當作管理員忘記刪掉的一句話。
+    -->
+
+    <p class="strange-note">
+      最近、朝になると座らせた位置が少しずれている気がする。
+    </p>
+
+
+    <hr />
+
+    <p class="links">
+      <a href="/links/squirtle_maze/room-a/">
+        ← 人形関連
+      </a>
+
+      <br />
+
+      <a href="/links/squirtle_maze/room-c/">
+        次の記事 →
+      </a>
+    </p>
+
+  </section>
+
 </MazeLayout>
+
+
+<style>
+  .elastic-page {
+    line-height: 1.7;
+  }
+
+  .breadcrumb {
+    margin-bottom: 24px;
+
+    color: #666;
+
+    font-size: 11px;
+  }
+
+  .elastic-page h2 {
+    text-align: center;
+  }
+
+  .elastic-page h3 {
+    margin-top: 28px;
+  }
+
+  .old-table {
+    width: min(520px, 100%);
+
+    margin: 20px auto;
+
+    border-collapse: collapse;
+
+    background: #eee;
+  }
+
+  .old-table th,
+  .old-table td {
+    padding: 5px 8px;
+
+    border: 1px solid #777;
+  }
+
+  .old-table th {
+    background: #ccc;
+  }
+
+  .normal-note {
+    font-size: 12px;
+  }
+
+  .lobster-note {
+    width: min(520px, 95%);
+
+    margin: 30px auto;
+
+    padding: 9px 12px;
+
+    border: 1px dashed #888;
+
+    background: #ffffcc;
+
+    font-family: monospace;
+
+    font-size: 12px;
+  }
+
+  .lobster-note p {
+    margin: 7px 0;
+  }
+
+  .edit-note {
+    color: #777;
+
+    font-size: 11px;
+  }
+
+  /*
+   * 不要讓它看起來像「恐怖線索」。
+   *
+   * 這只是管理員隨手記下的一句話。
+   */
+  .strange-note {
+    margin-top: 45px;
+
+    color: #777;
+
+    font-size: 11px;
+  }
+
+  .links {
+    margin-top: 30px;
+  }
+</style>
