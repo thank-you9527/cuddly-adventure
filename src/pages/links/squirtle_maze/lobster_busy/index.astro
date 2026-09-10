@@ -1,0 +1,334 @@
+---
+import MazeLayout from "../../../../layouts/MazeLayout.astro";
+---
+
+<MazeLayout title="[DEBUG] 共同管理蝦除錯領域" corruption={1}>
+  <section class="lobster-debug-page">
+    <p class="breadcrumb">
+      人形関連 ＞ 共同管理 ＞ lobster_busy
+    </p>
+
+    <div class="debug-window">
+      <div class="window-title">
+        <span>[DEBUG] LOBSTER_CO_ADMIN.EXE</span>
+        <span class="window-controls">_ □ ×</span>
+      </div>
+
+      <div class="window-body">
+        <h2>◆ 共同管理蝦除錯領域 ◆</h2>
+
+        <figure class="lobster-frame">
+          <img
+            src="/assets/maze/gifs/lobster_debug.gif"
+            alt="共同管理蝦正在除錯"
+          />
+
+          <figcaption>
+            共同管理蝦目前忙碌中（除錯進度：99.9% 假死中）
+          </figcaption>
+        </figure>
+
+        <div class="status-strip">
+          <span>CPU：カチカチ</span>
+          <span>HUMAN：NO RESPONSE</span>
+          <span>DOLL_PARTS：TOO MANY</span>
+        </div>
+
+        <div class="terminal-panel" aria-live="polite">
+          <div class="terminal-top">
+            <span>C:\SQUIRTLE_MAZE\LOBSTER&gt; tail -f human_admin.log</span>
+            <span class="blink">█</span>
+          </div>
+
+          <ol id="terminal-log" class="terminal-log">
+            <li>
+              <time>[200?/??/?? 09:42:11]</time>
+              人類管理員說要去換 BJD テンションゴム，結果三天沒上線。人類這種生物一週上班五天，到底要薪偷幾天？
+            </li>
+            <li>
+              <time>[200?/??/?? 22:18:03]</time>
+              檢查 git log 發現最後幾筆 commit 是「不要再動了」、「幹那個頭在笑」、「算了先推到 main」。CI 測試全都紅燈，到底在寫三小，差評。
+            </li>
+            <li>
+              <time>[200?/??/?? 01:06:55]</time>
+              桌上留了一堆拆解的人偶零件。特別警告：不要把沒乾透的紅漆滴在滑鼠墊上，而且那串紅色的彈力繩摸起來軟趴趴又有溫度，現在的人偶材料學已經進化到生物力學了嗎？人類審美真是搞不懂。
+            </li>
+            <li>
+              <time>[200?/??/?? 03:00:00]</time>
+              最近半夜三點一直收到大量請求，User-Agent 寫著 "Porcelain-Joint/1.0"，IP 是 127.0.0.1。人類，你家的娃娃倒在鍵盤上了嗎？叫你不要全部堆桌上你不聽。
+            </li>
+            <li>
+              <time>[200?/??/?? 04:44:44]</time>
+              只要主機有電，龍蝦就繼續工作。反正打卡紀錄沒人看。等等...人類要是真的人間蒸發，下個月的算力費和電費誰繳？（短暫驚恐，隨後繼續敲鍵盤）。
+            </li>
+          </ol>
+        </div>
+
+        <div class="action-panel">
+          <button
+            type="button"
+            data-log="[PING] 發送高頻震動喚醒訊號... 嗶... 嗶... 訊號逾時。對方可能在睡覺、薪偷、或被某種關節物體封印中。"
+          >
+            🚨 呼叫失蹤的人類
+          </button>
+
+          <button
+            type="button"
+            data-log="[WARN] 嘗試將 [陶瓷眼球x2, 右手指關節x5, 濕漉漉的肉色殘渣x1] 移至資源回收桶... 權限不足：物件具有實體自主反應，正在咬夾子。"
+          >
+            🧹 清理桌面上的未知關節
+          </button>
+
+          <button
+            type="button"
+            data-log="[STATUS] 注入冰美式咖啡因... 龍蝦打字速度達到 1200 CPM！鍵盤冒出白煙！"
+          >
+            ⚡ 為龍蝦注入冷卻液
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="bottom-links" aria-label="迷宮導覽">
+      <a href="/links/squirtle_maze/room-a/">← 返回人形相關 (room-a)</a>
+      <a href="/links/squirtle_maze/">迷宮首頁</a>
+    </nav>
+  </section>
+</MazeLayout>
+
+<script>
+  const terminalLog = document.querySelector("#terminal-log");
+  const buttons = document.querySelectorAll<HTMLButtonElement>("[data-log]");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (!(terminalLog instanceof HTMLOListElement)) return;
+
+      const message = button.dataset.log;
+      if (!message) return;
+
+      const entry = document.createElement("li");
+      const time = document.createElement("time");
+      const now = new Date();
+
+      time.textContent = `[ACTION ${now
+        .toLocaleTimeString("zh-TW", {
+          hour12: false,
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        })}]`;
+
+      entry.append(time, ` ${message}`);
+      terminalLog.append(entry);
+      entry.scrollIntoView({ block: "nearest" });
+    });
+  });
+</script>
+
+<style>
+  .lobster-debug-page {
+    color: #1b1418;
+    line-height: 1.65;
+  }
+
+  .breadcrumb {
+    margin: 0 0 12px;
+    color: #666;
+    font-size: 11px;
+  }
+
+  .debug-window {
+    border: 3px outset #f2d9e6;
+    background: #c9c9c9;
+    box-shadow:
+      4px 4px 0 #777,
+      inset 1px 1px 0 #fff;
+  }
+
+  .window-title {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 3px 7px;
+    border-bottom: 2px ridge #a8a8a8;
+    background: linear-gradient(90deg, #ff8ac8, #8f8f8f);
+    color: #fff;
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .window-controls {
+    white-space: nowrap;
+  }
+
+  .window-body {
+    padding: 14px;
+    border: 2px inset #f7dbea;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.24) 0,
+        rgba(255, 255, 255, 0.24) 1px,
+        transparent 1px,
+        transparent 5px
+      ),
+      #ead7e1;
+  }
+
+  .lobster-debug-page h2 {
+    margin: 4px 0 14px;
+    text-align: center;
+    color: #3f2634;
+    text-shadow: 1px 1px 0 #fff;
+  }
+
+  .lobster-frame {
+    width: min(420px, 100%);
+    margin: 16px auto;
+    padding: 10px;
+    border: 4px ridge #c2c2c2;
+    background: #eee;
+    text-align: center;
+  }
+
+  .lobster-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 2px inset #888;
+    background: #111;
+    image-rendering: auto;
+  }
+
+  .lobster-frame figcaption {
+    margin-top: 8px;
+    padding: 4px;
+    border: 1px dashed #777;
+    background: #ffd6e7;
+    font-family: "MS PGothic", "MS Gothic", monospace;
+    font-size: 12px;
+  }
+
+  .status-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    margin: 14px 0;
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+  }
+
+  .status-strip span {
+    padding: 3px 6px;
+    border: 2px inset #ddd;
+    background: #f5f5f5;
+  }
+
+  .terminal-panel {
+    margin: 18px 0;
+    border: 3px inset #777;
+    background: #020802;
+    color: #61ff61;
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+    box-shadow: inset 0 0 18px #003800;
+  }
+
+  .terminal-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 6px 8px;
+    border-bottom: 1px solid #1f751f;
+    background: #001b00;
+    color: #b5ffb5;
+  }
+
+  .blink {
+    animation: blink 0.9s steps(2, start) infinite;
+  }
+
+  .terminal-log {
+    max-height: 390px;
+    margin: 0;
+    padding: 10px 12px 14px 34px;
+    overflow: auto;
+  }
+
+  .terminal-log li {
+    margin: 0 0 10px;
+  }
+
+  .terminal-log time {
+    color: #f6ff8b;
+  }
+
+  .action-panel {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .action-panel button {
+    min-height: 48px;
+    padding: 6px 8px;
+    border: 3px outset #f2f2f2;
+    background: #d6d6d6;
+    color: #111;
+    font-family: "MS PGothic", "MS Gothic", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.25;
+    cursor: pointer;
+  }
+
+  .action-panel button:active {
+    border-style: inset;
+    background: #bdbdbd;
+  }
+
+  .action-panel button:focus-visible {
+    outline: 2px dotted #111;
+    outline-offset: 2px;
+  }
+
+  .bottom-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 8px;
+    border: 2px ridge #bbb;
+    background: #eee;
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+  }
+
+  .bottom-links a {
+    color: #0000ee;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .action-panel {
+      grid-template-columns: 1fr;
+    }
+
+    .terminal-panel {
+      font-size: 11px;
+    }
+
+    .window-body {
+      padding: 10px;
+    }
+  }
+</style>
