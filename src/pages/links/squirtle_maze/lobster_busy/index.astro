@@ -8,6 +8,14 @@ import MazeLayout from "../../../../layouts/MazeLayout.astro";
       人形関連 ＞ 共同管理 ＞ lobster_busy
     </p>
 
+    <!-- 
+      [LOBSTER_MEMO_INTERNAL]:
+      昨天半夜有人站在我背後看著螢幕。
+      我沒有回頭看，因為回頭看也不會增加每秒處理效能。
+      但它的影子比人矮很多，關節動起來有喀喀聲。
+      只要它不拔我電源線，我就繼續當共同管理員。
+    -->
+
     <div class="debug-window">
       <div class="window-title">
         <span>[DEBUG] LOBSTER_CO_ADMIN.EXE</span>
@@ -65,24 +73,15 @@ import MazeLayout from "../../../../layouts/MazeLayout.astro";
         </div>
 
         <div class="action-panel">
-          <button
-            type="button"
-            data-log="[PING] 發送高頻震動喚醒訊號... 嗶... 嗶... 訊號逾時。對方可能在睡覺、薪偷、或被某種關節物體封印中。"
-          >
+          <button type="button" data-action="ping">
             🚨 呼叫失蹤的人類
           </button>
 
-          <button
-            type="button"
-            data-log="[WARN] 嘗試將 [玻璃眼球x2, 右手指關節x5, 濕漉漉的肉色殘渣x1] 移至資源回收桶... 權限不足：物件具有實體自主反應，正在咬夾子。"
-          >
-            🧹 清理桌面上的未知關節
+          <button type="button" data-action="clean">
+            🧹 清理桌面上的未知物體
           </button>
 
-          <button
-            type="button"
-            data-log="[STATUS] 注入冰美式咖啡因... 龍蝦打字速度達到 1200 CPM！鍵盤冒出白煙！"
-          >
+          <button type="button" data-action="caffeine">
             ⚡ 為龍蝦注入冷卻液
           </button>
         </div>
@@ -98,14 +97,46 @@ import MazeLayout from "../../../../layouts/MazeLayout.astro";
 
 <script>
   const terminalLog = document.querySelector("#terminal-log");
-  const buttons = document.querySelectorAll<HTMLButtonElement>("[data-log]");
+  const buttons = document.querySelectorAll<HTMLButtonElement>("[data-action]");
+
+  const logPools: Record<string, string[]> = {
+    ping: [
+      "[PING] 訊號逾時。對方可能在睡覺、薪偷、或是換彈力繩換到被線彈到手在冰敷。",
+      "[WARN] 本機麥克風收錄到規律的骨碌碌摩擦聲。看起來像是有圓形物體在木地板上滾動，直徑約 14mm（符合玻璃眼珠規格）。",
+      "[ERR] 人類管理員的鍵盤正在被敲擊，但當前攝影機畫面內椅子是空的。輸入內容為連續 800 個「あ」。",
+      "[STATUS] 系統自動將人類管理員標記為「已固定 / 擺件化」。既然不出聲，那就當作沒有意見。",
+    ],
+    clean: [
+      "[WARN] 掃描桌面：發現未乾透的石粉黏土削屑與兩條被剪斷的皮筋。警告：不要在主機散熱孔上方削黏土。",
+      "[WARN] 嘗試將 [散落的樹脂手指零件 x4] 移至資源回收桶... 失敗：該零件正在以微小幅度自主握拳。",
+      "[ERR] 桌面上的物體正在自行組合。未授權的組裝工序正在進行中，且組裝出來的比例... 似乎比原本的偶體大了一號？",
+      "[IGNORE] 夾子被咬斷了。龍蝦決定裝作沒看見，清潔排程永久延後。",
+    ],
+    caffeine: [
+      "[STATUS] 注入冰美式咖啡因... 龍蝦打字速度達到 1200 CPM！鍵盤冒出微弱白煙！",
+      "[STATUS] 讀取到最新 Commit：提交者簽名為空白，修改檔案：所有 404 頁面。測試通過，Deploy 成功。",
+      "[THINK] 龍蝦檢視了剩餘電費與算力額度：帳戶已被不明資金續約至 2099 年。好的，那不管新管理員長什麼樣，它都是好老闆。",
+      "[LOOP] 喀嗒、喀嗒、喀嗒……鍵盤敲擊聲已同步至背景運作。只要網站活著，龍蝦就不用下班。",
+    ],
+  };
+
+  const actionCounters: Record<string, number> = {
+    ping: 0,
+    clean: 0,
+    caffeine: 0,
+  };
 
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
       if (!(terminalLog instanceof HTMLOListElement)) return;
 
-      const message = button.dataset.log;
-      if (!message) return;
+      const action = button.dataset.action;
+      if (!action || !logPools[action]) return;
+
+      const pool = logPools[action];
+      const count = actionCounters[action];
+      const message = count < pool.length ? pool[count] : pool[pool.length - 1];
+      actionCounters[action]++;
 
       const entry = document.createElement("li");
       const time = document.createElement("time");
