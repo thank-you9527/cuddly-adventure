@@ -1,0 +1,306 @@
+---
+import MazeLayout from "../../../../../layouts/MazeLayout.astro";
+---
+
+<MazeLayout title="サイト修正記録 01" corruption={0}>
+
+  <article class="personal-log">
+
+    <p class="breadcrumb">
+      LINK ＞ 更新履歴 ＞ 01
+    </p>
+
+    <h2>◆ サイト修正記録 01 ◆</h2>
+
+    <p class="intro">
+      サイト作業のメモ。<br />
+      後で忘れそうなので適当に残しておく。
+    </p>
+
+    <hr />
+
+
+    <!-- =========================
+         20xx/09/08
+         ========================= -->
+
+    <section class="log-entry">
+
+      <h3>20xx/09/08</h3>
+
+      <p>
+        娃写真頁面完成！
+      </p>
+
+      <p>
+        測試圖片先隨便塞了一些轟炸視網膜的迷因圖，
+        晚點再換掉🐒
+      </p>
+
+      <ul>
+        <li>相簿列表 OK</li>
+        <li>單篇頁面 OK</li>
+        <li>手機版大概 OK</li>
+        <li>正式照片 TODO</li>
+      </ul>
+
+      <p class="todo">
+        TODO：<br />
+        ・換掉測試圖片<br />
+        ・補娃名<br />
+        ・照片再壓一下
+      </p>
+
+    </section>
+
+
+    <hr />
+
+
+    <!-- =========================
+         20xx/09/09
+         ========================= -->
+
+    <section class="log-entry">
+
+      <h3>20xx/09/09</h3>
+
+      <p>
+        LINK頁面施工中。
+      </p>
+
+      <p>
+        不知道為什麼越做越多頁面了👁👄👁☝
+      </p>
+
+      <p>
+        本來只是想放一些常用網站，
+        現在資料夾一直長出來。
+      </p>
+
+      <p>
+        先這樣，反正能build就好。
+      </p>
+
+      <!-- typo 故意保留 -->
+      <p class="memo">
+        memo：晚點整理linK頁面的路經
+      </p>
+
+    </section>
+
+
+    <!-- =========================
+         龍蝦巡視紀錄
+
+         看起來只是正常 AI 協作。
+         此時沒有恐怖。
+         ========================= -->
+
+    <div class="lobster-review">
+
+      <div class="review-title">
+        🦞 巡視紀錄
+      </div>
+
+      <p>
+        🦞：有些地方的圖片缺失，要生成幾張塞進去嗎
+      </p>
+
+      <p>
+        🐒：先不用，我有手
+      </p>
+
+      <p>
+        🦞：好，那我先不動圖片。
+      </p>
+
+    </div>
+
+
+    <hr />
+
+
+    <!-- =========================
+         尚未完成的施工區
+
+         故意真的像做到一半。
+         ========================= -->
+
+    <section class="unfinished">
+
+      <h3>◆ 工事中 ◆</h3>
+
+      <p>
+        以下之後再弄：
+      </p>
+
+      <ul>
+        <li>LINK分類</li>
+        <li>一些裝飾GIF</li>
+        <li>缺的圖片</li>
+        <li>404?</li>
+        <li>不知道，想到再說</li>
+      </ul>
+
+      <div class="broken-image">
+        [ 工事中.gif ]
+      </div>
+
+    </section>
+
+
+    <nav class="log-navigation">
+
+      <a href="/links/squirtle_maze/personal_website/">
+        ← 更新記録
+      </a>
+
+      <a href="/links/squirtle_maze/personal_website/log02/">
+        02 →
+      </a>
+
+    </nav>
+
+  </article>
+
+</MazeLayout>
+
+
+<style>
+  .personal-log {
+    line-height: 1.75;
+  }
+
+  .breadcrumb {
+    margin-bottom: 20px;
+
+    color: #777;
+
+    font-size: 11px;
+  }
+
+  .personal-log h2 {
+    text-align: center;
+  }
+
+  .intro {
+    text-align: center;
+
+    color: #555;
+
+    font-size: 12px;
+  }
+
+  .log-entry {
+    margin: 25px 0;
+  }
+
+  .log-entry h3 {
+    padding-bottom: 3px;
+
+    border-bottom: 1px dotted #999;
+
+    font-family:
+      "Courier New",
+      monospace;
+  }
+
+  .todo,
+  .memo {
+    margin: 18px 0;
+
+    padding: 7px 10px;
+
+    border-left: 3px solid #aaa;
+
+    background: #eee;
+
+    font-family:
+      monospace;
+
+    font-size: 12px;
+  }
+
+
+  /* =========================
+     正常工作的龍蝦
+     ========================= */
+
+  .lobster-review {
+    width: min(520px, 95%);
+
+    margin: 35px auto;
+
+    border: 1px dashed #888;
+
+    background: #ffffcc;
+
+    font-family:
+      monospace;
+
+    font-size: 12px;
+  }
+
+  .review-title {
+    padding: 4px 7px;
+
+    border-bottom: 1px dashed #888;
+
+    background: #eeeeaa;
+
+    font-weight: bold;
+  }
+
+  .lobster-review p {
+    margin: 8px 10px;
+  }
+
+
+  /* =========================
+     永遠施工中的垃圾
+     ========================= */
+
+  .unfinished {
+    margin: 30px 0;
+  }
+
+  .broken-image {
+    display: grid;
+
+    width: 120px;
+    height: 60px;
+
+    margin: 20px auto;
+
+    border: 1px solid #888;
+
+    place-items: center;
+
+    background: #ddd;
+
+    color: #777;
+
+    font-family:
+      monospace;
+
+    font-size: 10px;
+
+    text-align: center;
+  }
+
+
+  .log-navigation {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-top: 40px;
+
+    padding-top: 10px;
+
+    border-top: 1px dotted #777;
+  }
+</style>

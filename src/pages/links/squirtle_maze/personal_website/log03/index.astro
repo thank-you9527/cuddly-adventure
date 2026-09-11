@@ -1,0 +1,499 @@
+---
+import MazeLayout from "../../../../../layouts/MazeLayout.astro";
+---
+
+<MazeLayout title="更新履歴 03" corruption={1}>
+
+  <article class="update-log">
+
+    <p class="breadcrumb">
+      LINK ＞ 更新履歴 ＞ 03
+    </p>
+
+    <h2>◆ 更新履歴 03 ◆</h2>
+
+    <p class="intro">
+      サイト作業のメモ。
+    </p>
+
+    <hr />
+
+
+    <!-- =========================
+         20xx/09/15
+         ========================= -->
+
+    <section class="log-entry">
+
+      <h3>20xx/09/15</h3>
+
+      <p>
+        public\assets\photos 裡面多了幾張沒印象的照片。
+      </p>
+
+      <p>
+        最早看到的是這張：
+      </p>
+
+      <div class="file-name">
+        0915.png
+      </div>
+
+      <p>
+        檔名也沒寫這是什麼。
+      </p>
+
+      <p>
+        我最近有拍這張嗎？
+      </p>
+
+    </section>
+
+
+    <!-- =========================
+         管理員 / 龍蝦留言
+         ========================= -->
+
+    <section class="admin-chat">
+
+      <div class="chat-header">
+        管理用メモ
+      </div>
+
+      <div class="chat-body">
+
+        <div class="message human">
+          <span class="speaker">🐒 管理人</span>
+
+          <p>
+            你沒有把png轉webp就pull上去了?
+          </p>
+        </div>
+
+        <div class="message lobster">
+          <span class="speaker">🦞 共同管理蝦</span>
+
+          <p>
+            不是你幹的嗎
+          </p>
+        </div>
+
+        <div class="message human">
+          <span class="speaker">🐒 管理人</span>
+
+          <p>
+            蛤
+          </p>
+        </div>
+
+        <div class="message lobster">
+          <span class="speaker">🦞 共同管理蝦</span>
+
+          <p>
+            我pull下來的時候就有了
+          </p>
+        </div>
+
+        <div class="message human">
+          <span class="speaker">🐒 管理人</span>
+
+          <p>
+            ......
+          </p>
+        </div>
+
+        <div class="message human">
+          <span class="speaker">🐒 管理人</span>
+
+          <p>
+            算了我晚點看
+          </p>
+        </div>
+
+      </div>
+
+      <div class="chat-input">
+        <input
+          type="text"
+          placeholder="管理員のみ書き込みできます"
+          disabled
+        />
+
+        <button type="button" disabled>
+          書き込む
+        </button>
+      </div>
+
+    </section>
+
+
+    <hr />
+
+
+    <!-- =========================
+         20xx/09/17
+         ========================= -->
+
+    <section class="log-entry">
+
+      <h3>20xx/09/17</h3>
+
+      <p>
+        不只一張。
+      </p>
+
+      <p>
+        有幾個檔案都丟在 photos 裡，
+        日期也差不多。
+      </p>
+
+      <p>
+        Git紀錄看起來又不像龍蝦弄的。
+      </p>
+
+      <p>
+        可是我真的不記得有拍。
+      </p>
+
+      <p class="memo">
+        TODO：<br />
+        ・確認手機相簿<br />
+        ・確認相機備份<br />
+        ・看看是不是以前的照片忘了整理
+      </p>
+
+    </section>
+
+
+    <hr />
+
+
+    <!-- =========================
+         20xx/09/22
+         ========================= -->
+
+    <section class="log-entry">
+
+      <h3>20xx/09/22</h3>
+
+      <p>
+        我把那幾張圖刪了。
+      </p>
+
+      <p>
+        媽蛋不要再出現了。
+      </p>
+
+      <p class="strong-note">
+        我知道那些圖長什麼樣。
+      </p>
+
+    </section>
+
+
+    <!--
+      這張圖片不是上面文章內容的一部分。
+
+      沒有標題。
+      沒有說明。
+      沒有時間。
+    -->
+
+    <div class="unknown-photo">
+      <img
+        src="/assets/maze/cursed/0915.webp"
+        alt="0915"
+      />
+    </div>
+
+
+    <nav class="log-navigation">
+
+      <a href="/links/squirtle_maze/personal_website/log02/">
+        ← 02
+      </a>
+
+      <a href="/links/squirtle_maze/personal_website/">
+        更新履歴
+      </a>
+
+      <a href="/links/squirtle_maze/personal_website/log04/">
+        04 →
+      </a>
+
+    </nav>
+
+  </article>
+
+</MazeLayout>
+
+
+<style>
+  .update-log {
+    line-height: 1.75;
+  }
+
+  .breadcrumb {
+    margin-bottom: 20px;
+    color: #777;
+    font-size: 11px;
+  }
+
+  .update-log h2 {
+    text-align: center;
+  }
+
+  .intro {
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+  }
+
+
+  /* =========================
+     更新紀錄
+     ========================= */
+
+  .log-entry {
+    margin: 25px 0;
+  }
+
+  .log-entry h3 {
+    padding-bottom: 3px;
+    border-bottom: 1px dotted #999;
+
+    font-family:
+      "Courier New",
+      monospace;
+  }
+
+  .file-name {
+    width: fit-content;
+    max-width: 100%;
+
+    margin: 12px 0;
+    padding: 5px 8px;
+
+    border: 1px solid #aaa;
+
+    background: #f1f1f1;
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    font-size: 12px;
+
+    overflow-wrap: anywhere;
+  }
+
+  .memo {
+    margin: 18px 0;
+    padding: 8px 10px;
+
+    border-left: 3px solid #aaa;
+
+    background: #eee;
+
+    font-family: monospace;
+    font-size: 12px;
+  }
+
+  .strong-note {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+
+
+  /* =========================
+     管理員 / 龍蝦留言
+     ========================= */
+
+  .admin-chat {
+    width: min(560px, 96%);
+
+    margin: 30px auto;
+
+    border: 3px ridge #bbb;
+
+    background: #ddd;
+  }
+
+  .chat-header {
+    padding: 4px 7px;
+
+    border-bottom: 2px ridge #bbb;
+
+    background:
+      linear-gradient(
+        90deg,
+        #ff9bcb,
+        #d3d3d3
+      );
+
+    color: #333;
+
+    font-family:
+      "MS PGothic",
+      "MS Gothic",
+      monospace;
+
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .chat-body {
+    padding: 10px;
+    background: #f5f5f5;
+  }
+
+  .message {
+    margin: 0 0 10px;
+    padding: 6px 8px;
+
+    border: 1px solid #aaa;
+
+    background: #fff;
+  }
+
+  .message:last-child {
+    margin-bottom: 0;
+  }
+
+  .message.human {
+    margin-right: 28px;
+  }
+
+  .message.lobster {
+    margin-left: 28px;
+    background: #fffbe1;
+  }
+
+  .speaker {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #666;
+
+    font-family: monospace;
+    font-size: 10px;
+  }
+
+  .message p {
+    margin: 0;
+    font-size: 12px;
+  }
+
+
+  /* =========================
+     訪客不能留言
+     ========================= */
+
+  .chat-input {
+    display: grid;
+
+    grid-template-columns:
+      1fr
+      auto;
+
+    gap: 5px;
+
+    padding: 7px;
+
+    border-top: 2px ridge #bbb;
+
+    background: #ccc;
+  }
+
+  .chat-input input,
+  .chat-input button {
+    font-family:
+      "MS PGothic",
+      "MS Gothic",
+      Arial,
+      sans-serif;
+
+    font-size: 11px;
+  }
+
+  .chat-input input {
+    min-width: 0;
+
+    padding: 4px;
+
+    border: 2px inset #eee;
+
+    background: #eee;
+  }
+
+  .chat-input button {
+    padding: 3px 9px;
+
+    border: 2px outset #eee;
+
+    background: #d3d3d3;
+  }
+
+
+  /* =========================
+     不該在這裡的圖片
+     ========================= */
+
+  .unknown-photo {
+    width: min(500px, 92%);
+
+    margin:
+      60px
+      auto
+      50px;
+
+    text-align: center;
+  }
+
+  .unknown-photo img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    margin: 0 auto;
+
+    border: 0;
+  }
+
+
+  /* =========================
+     上下頁
+     ========================= */
+
+  .log-navigation {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 40px;
+    padding-top: 10px;
+
+    border-top: 1px dotted #777;
+  }
+
+
+  @media (max-width: 600px) {
+    .message.human {
+      margin-right: 12px;
+    }
+
+    .message.lobster {
+      margin-left: 12px;
+    }
+
+    .chat-input {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

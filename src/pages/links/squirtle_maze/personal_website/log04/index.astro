@@ -1,0 +1,557 @@
+---
+import MazeLayout from "../../../../../layouts/MazeLayout.astro";
+---
+
+<MazeLayout title="更新履歴 04" corruption={2}>
+
+  <article class="update-log">
+
+    <p class="breadcrumb">
+      LINK ＞ 更新履歴 ＞ 04
+    </p>
+
+    <h2>◆ 更新履歴 04 ◆</h2>
+
+    <p class="intro">
+      サイト作業のメモ。
+    </p>
+
+    <hr />
+
+
+    <!-- =========================
+         20xx/09/24
+         ========================= -->
+
+    <section class="log-entry critical-entry">
+
+      <h3>20xx/09/24 01:43</h3>
+
+      <p>
+        我知道原因了。
+      </p>
+
+      <p>
+        不是網站自己產生那些頁面。
+      </p>
+
+      <p class="redacted-line">
+        是████████████████
+      </p>
+
+      <p>
+        我原本以為████████████████
+      </p>
+
+      <p>
+        但是它們████████████████
+      </p>
+
+      <p class="warning-text">
+        如果有人看到這個，<br />
+        不要████████████████
+      </p>
+
+    </section>
+
+
+    <!-- =========================
+         管理員 / 龍蝦留言板
+         第一次出現第三個發話者
+         ========================= -->
+
+    <section class="admin-chat">
+
+      <div class="chat-header">
+        管理用メモ
+      </div>
+
+      <div class="chat-body">
+
+        <div class="message human">
+          <span class="speaker">
+            🐒 管理人
+          </span>
+
+          <p>
+            蝦蝦你不要再編輯那些內容了
+          </p>
+        </div>
+
+
+        <div class="message lobster">
+          <span class="speaker">
+            🦞 共同管理蝦
+          </span>
+
+          <p>
+            ?可是那不是你編輯上去的嗎?
+          </p>
+        </div>
+
+
+        <div class="message unknown">
+          <span class="speaker">
+            ？
+          </span>
+
+          <p class="corrupted-text">
+            是҈͔̩̞͎̱̬͕̙͑̆̓͋̐̋̅̃͒我҈̝͚̦̩͕̞̤̪̗͚̐̉́́͑̔͒̽̆̀
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="chat-input">
+
+        <input
+          type="text"
+          placeholder="管理員のみ書き込みできます"
+          disabled
+        />
+
+        <button
+          type="button"
+          disabled
+        >
+          書き込む
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <hr />
+
+
+    <!-- =========================
+         後面沒有正常更新
+         ========================= -->
+
+    <section class="log-entry">
+
+      <h3>20xx/09/24 02:11</h3>
+
+      <p>
+        ..........
+      </p>
+
+      <p>
+        我先關機。
+      </p>
+
+    </section>
+
+
+    <nav class="log-navigation">
+
+      <a href="/links/squirtle_maze/personal_website/log03/">
+        ← 03
+      </a>
+
+      <a href="/links/squirtle_maze/personal_website/">
+        更新履歴
+      </a>
+
+      <a href="/links/squirtle_maze/personal_website/log05/">
+        05 →
+      </a>
+
+    </nav>
+
+  </article>
+
+
+  <!-- =========================
+       浮在整個頁面上方的訊號故障
+       ========================= -->
+
+  <div class="signal-corruption" aria-hidden="true">
+    <div class="signal-band band-a"></div>
+    <div class="signal-band band-b"></div>
+    <div class="signal-band band-c"></div>
+    <div class="signal-band band-d"></div>
+  </div>
+
+<style>
+/* =========================
+   第四期：老電視訊號故障層
+   浮在所有內容上，不擋滑鼠
+   ========================= */
+
+.signal-corruption {
+  position: fixed;
+  z-index: 999999;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  overflow: hidden;
+}
+
+/* 共用訊號條 */
+.signal-band {
+  position: absolute;
+
+  left: -10vw;
+
+  width: 120vw;
+
+  opacity: 0;
+
+  mix-blend-mode: screen;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.65) 0px,
+      rgba(255, 255, 255, 0.65) 1px,
+      rgba(0, 0, 0, 0.1) 2px,
+      rgba(0, 0, 0, 0.1) 4px
+    );
+
+  filter:
+    contrast(180%)
+    saturate(140%);
+
+  transform: skewX(-4deg);
+}
+
+/* 每一條故障的位置、大小、節奏不同 */
+
+.band-a {
+  top: 12%;
+
+  height: 24px;
+
+  animation:
+    signal-a
+    6.8s
+    steps(1)
+    infinite;
+}
+
+.band-b {
+  top: 38%;
+
+  height: 46px;
+
+  animation:
+    signal-b
+    8.3s
+    steps(1)
+    infinite;
+}
+
+.band-c {
+  top: 63%;
+
+  height: 16px;
+
+  animation:
+    signal-c
+    5.7s
+    steps(1)
+    infinite;
+}
+
+.band-d {
+  top: 81%;
+
+  height: 62px;
+
+  animation:
+    signal-d
+    11.2s
+    steps(1)
+    infinite;
+}
+
+
+/* =========================
+   訊號故障動畫
+
+   大多數時間 invisible，
+   偶爾突然抽一下。
+   ========================= */
+
+@keyframes signal-a {
+  0%,
+  7%,
+  10%,
+  43%,
+  47%,
+  82%,
+  86%,
+  100% {
+    opacity: 0;
+    transform:
+      translateX(0)
+      skewX(-4deg);
+  }
+
+  8% {
+    opacity: 0.55;
+    transform:
+      translateX(-8vw)
+      skewX(7deg);
+  }
+
+  9% {
+    opacity: 0.2;
+    transform:
+      translateX(11vw)
+      skewX(-10deg);
+  }
+
+  44% {
+    opacity: 0.35;
+    transform:
+      translateX(4vw)
+      skewX(5deg);
+  }
+
+  45% {
+    opacity: 0.65;
+    transform:
+      translateX(-13vw)
+      skewX(-7deg);
+  }
+
+  83% {
+    opacity: 0.45;
+    transform:
+      translateX(17vw)
+      skewX(12deg);
+  }
+}
+
+
+@keyframes signal-b {
+  0%,
+  18%,
+  22%,
+  58%,
+  61%,
+  92%,
+  100% {
+    opacity: 0;
+  }
+
+  19% {
+    opacity: 0.25;
+    transform:
+      translateX(-18vw)
+      scaleY(0.7);
+  }
+
+  20% {
+    opacity: 0.6;
+    transform:
+      translateX(9vw)
+      scaleY(1.4);
+  }
+
+  59% {
+    opacity: 0.4;
+    transform:
+      translateX(14vw)
+      scaleY(0.5);
+  }
+
+  60% {
+    opacity: 0.75;
+    transform:
+      translateX(-7vw)
+      scaleY(1.1);
+  }
+
+  93% {
+    opacity: 0.35;
+    transform:
+      translateX(3vw)
+      scaleY(1.7);
+  }
+}
+
+
+@keyframes signal-c {
+  0%,
+  31%,
+  34%,
+  69%,
+  72%,
+  100% {
+    opacity: 0;
+  }
+
+  32% {
+    opacity: 0.7;
+    transform:
+      translateX(-10vw)
+      skewX(18deg);
+  }
+
+  33% {
+    opacity: 0.25;
+    transform:
+      translateX(21vw)
+      skewX(-15deg);
+  }
+
+  70% {
+    opacity: 0.5;
+    transform:
+      translateX(6vw)
+      skewX(8deg);
+  }
+
+  71% {
+    opacity: 0.15;
+    transform:
+      translateX(-20vw)
+      skewX(-4deg);
+  }
+}
+
+
+@keyframes signal-d {
+  0%,
+  11%,
+  14%,
+  51%,
+  54%,
+  76%,
+  80%,
+  100% {
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.25;
+    transform:
+      translateX(6vw)
+      scaleY(0.4);
+  }
+
+  13% {
+    opacity: 0.6;
+    transform:
+      translateX(-12vw)
+      scaleY(1.3);
+  }
+
+  52% {
+    opacity: 0.4;
+    transform:
+      translateX(16vw)
+      scaleY(0.8);
+  }
+
+  53% {
+    opacity: 0.7;
+    transform:
+      translateX(-4vw)
+      scaleY(1.7);
+  }
+
+  77% {
+    opacity: 0.55;
+    transform:
+      translateX(10vw)
+      scaleY(0.6);
+  }
+
+  78% {
+    opacity: 0.2;
+    transform:
+      translateX(-18vw)
+      scaleY(1.5);
+  }
+}
+
+
+/* 尊重 reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .signal-band {
+    animation: none;
+    opacity: 0;
+  }
+}
+/* =========================
+   被塗掉的內容
+   ========================= */
+
+.redacted-line,
+.warning-text {
+  letter-spacing: 1px;
+}
+
+.warning-text {
+  margin-top: 24px;
+
+  font-weight: bold;
+}
+
+
+/* =========================
+   第三個留言者
+   ========================= */
+
+.message.unknown {
+  margin-left: 14px;
+  margin-right: 14px;
+
+  border:
+    1px solid
+    #444;
+
+  background: #111;
+
+  color: #eee;
+}
+
+.message.unknown .speaker {
+  color: #aaa;
+}
+
+.corrupted-text {
+  font-family:
+    "Times New Roman",
+    serif;
+
+  font-size: 15px !important;
+
+  letter-spacing: 2px;
+
+  animation:
+    bad-text
+    1.8s
+    steps(1)
+    infinite;
+}
+
+@keyframes bad-text {
+  0%,
+  82%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  84% {
+    transform: translate(-2px, 1px);
+  }
+
+  87% {
+    transform: translate(2px, -1px);
+  }
+
+  90% {
+    transform: translate(-1px, 0);
+  }
+}
+</style>
+</MazeLayout>

@@ -1,0 +1,591 @@
+---
+import MazeLayout from "../../../../../layouts/MazeLayout.astro";
+---
+
+<MazeLayout title="更新履歴 02" corruption={0}>
+
+  <article class="update-log">
+
+    <p class="breadcrumb">
+      LINK ＞ 更新履歴 ＞ 02
+    </p>
+
+    <h2>◆ 更新履歴 02 ◆</h2>
+
+    <p class="intro">
+      サイト作業のメモ。<br />
+      まだ普通。
+    </p>
+
+    <hr />
+
+
+    <!-- =========================
+         20xx/09/11
+         ========================= -->
+
+    <section class="log-entry">
+
+      <h3>20xx/09/11</h3>
+
+      <p>
+        LINK頁面繼續施工。
+      </p>
+
+      <p>
+        昨天才發現幾個頁面的
+        <code>../</code>
+        又少放了。
+      </p>
+
+      <p>
+        到底為什麼資料夾越深，
+        我的腦子就越不會數數字🐒
+      </p>
+
+      <ul>
+        <li>修正幾個 import 路徑</li>
+        <li>補幾個還沒接好的連結</li>
+        <li>把 placeholder 頁面先放著</li>
+        <li>有些圖片之後再處理</li>
+      </ul>
+
+      <p class="todo">
+        TODO：<br />
+        ・整理LINK裡面的資料夾<br />
+        ・確認所有頁面都能build<br />
+        ・不要再少打一個../
+      </p>
+
+    </section>
+
+
+    <hr />
+
+
+    <!-- =========================
+         管理員 / 龍蝦留言板
+
+         訪客可以看。
+         訪客不能輸入。
+         ========================= -->
+
+    <section class="admin-chat">
+
+      <div class="chat-header">
+        管理用メモ
+      </div>
+
+      <div class="chat-body">
+
+        <div class="message human">
+          <span class="speaker">🐒 管理人</span>
+
+          <p>
+            我剛剛build又炸了
+          </p>
+        </div>
+
+        <div class="message lobster">
+          <span class="speaker">🦞 共同管理蝦</span>
+
+          <p>
+            ads底下那幾頁的import又少爬一層ψ(._. )&gt;
+          </p>
+        </div>
+
+        <div class="message human">
+          <span class="speaker">🐒 管理人</span>
+
+          <p>
+            我就知道
+          </p>
+        </div>
+
+        <div class="message lobster">
+          <span class="speaker">🦞 共同管理蝦</span>
+
+          <p>
+            README有寫
+          </p>
+        </div>
+
+        <div class="message human">
+          <span class="speaker">🐒 管理人</span>
+
+          <p>
+            閉嘴
+          </p>
+        </div>
+
+      </div>
+
+      <div class="chat-input fake-disabled">
+
+        <input
+          type="text"
+          value=""
+          placeholder="管理員のみ書き込みできます"
+          disabled
+        />
+
+        <button
+          type="button"
+          disabled
+        >
+          書き込む
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <hr />
+
+
+    <!-- =========================
+         20xx/09/13
+         ========================= -->
+
+    <section class="log-entry">
+
+      <h3>20xx/09/13</h3>
+
+      <p>
+        嘶、有點怪。
+      </p>
+
+      <p>
+        昨天刪掉的檔案今天又出現了。
+      </p>
+
+      <div class="file-name">
+        test_FinalVersion_ReallyReallyFinalVersion.md
+      </div>
+
+      <p>
+        可能是我git的時候搞錯了(?
+      </p>
+
+      <p>
+        先刪ㄅ
+      </p>
+
+    </section>
+
+
+    <!-- =========================
+         同一件事的留言
+         此時仍然完全可以當作人類手殘
+         ========================= -->
+
+    <section class="admin-chat">
+
+      <div class="chat-header">
+        管理用メモ
+      </div>
+
+      <div class="chat-body">
+
+        <div class="message human">
+          <span class="speaker">🐒 管理人</span>
+
+          <p>
+            靠北蝦蝦你到底有沒有刪掉
+          </p>
+        </div>
+
+        <div class="message lobster">
+          <span class="speaker">🦞 共同管理蝦</span>
+
+          <p>
+            有啊ψ(._. )&gt;
+          </p>
+        </div>
+
+        <div class="message human">
+          <span class="speaker">🐒 管理人</span>
+
+          <p>
+            那它怎麼又回來了
+          </p>
+        </div>
+
+        <div class="message lobster">
+          <span class="speaker">🦞 共同管理蝦</span>
+
+          <p>
+            你昨天不是還有自己動git嗎
+          </p>
+        </div>
+
+        <div class="message human">
+          <span class="speaker">🐒 管理人</span>
+
+          <p>
+            好像有
+          </p>
+        </div>
+
+        <div class="message lobster">
+          <span class="speaker">🦞 共同管理蝦</span>
+
+          <p>
+            那大概就是你自己弄回來的
+          </p>
+        </div>
+
+        <div class="message human">
+          <span class="speaker">🐒 管理人</span>
+
+          <p>
+            合理
+          </p>
+        </div>
+
+      </div>
+
+      <div class="chat-input fake-disabled">
+
+        <input
+          type="text"
+          placeholder="管理員のみ書き込みできます"
+          disabled
+        />
+
+        <button
+          type="button"
+          disabled
+        >
+          書き込む
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <hr />
+
+
+    <!-- =========================
+         還是普通施工紀錄
+         ========================= -->
+
+    <section class="log-entry">
+
+      <h3>20xx/09/14</h3>
+
+      <p>
+        今天看了一下，
+        那個檔案沒有再復活。
+      </p>
+
+      <p>
+        果然只是我昨天git搞到吧。
+      </p>
+
+      <p>
+        繼續做LINK。
+      </p>
+
+      <p class="memo">
+        memo：<br />
+        room之間的連結再檢查一次<br />
+        有幾個頁面還是長得很空<br />
+        晚點塞點垃圾進去
+      </p>
+
+    </section>
+
+
+    <nav class="log-navigation">
+
+      <a href="/links/squirtle_maze/personal_website/log01/">
+        ← 01
+      </a>
+
+      <a href="/links/squirtle_maze/personal_website/">
+        更新履歴
+      </a>
+
+      <a href="/links/squirtle_maze/personal_website/log03/">
+        03 →
+      </a>
+
+    </nav>
+
+  </article>
+
+</MazeLayout>
+
+
+<style>
+  .update-log {
+    line-height: 1.75;
+  }
+
+  .breadcrumb {
+    margin-bottom: 20px;
+
+    color: #777;
+
+    font-size: 11px;
+  }
+
+  .update-log h2 {
+    text-align: center;
+  }
+
+  .intro {
+    text-align: center;
+
+    color: #666;
+
+    font-size: 12px;
+  }
+
+
+  /* =========================
+     一般更新紀錄
+     ========================= */
+
+  .log-entry {
+    margin: 25px 0;
+  }
+
+  .log-entry h3 {
+    padding-bottom: 3px;
+
+    border-bottom: 1px dotted #999;
+
+    font-family:
+      "Courier New",
+      monospace;
+  }
+
+  .todo,
+  .memo {
+    margin: 18px 0;
+
+    padding: 8px 10px;
+
+    border-left: 3px solid #aaa;
+
+    background: #eee;
+
+    font-family:
+      monospace;
+
+    font-size: 12px;
+  }
+
+  .file-name {
+    width: fit-content;
+
+    max-width: 100%;
+
+    margin: 12px 0;
+
+    padding: 5px 8px;
+
+    border: 1px solid #aaa;
+
+    background: #f1f1f1;
+
+    color: #333;
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    font-size: 12px;
+
+    overflow-wrap: anywhere;
+  }
+
+
+  /* =========================
+     管理員與龍蝦的留言區
+
+     刻意像舊網站的小型管理留言板。
+     訪客只能偷看。
+     ========================= */
+
+  .admin-chat {
+    width: min(560px, 96%);
+
+    margin: 30px auto;
+
+    border: 3px ridge #bbb;
+
+    background: #ddd;
+  }
+
+  .chat-header {
+    padding: 4px 7px;
+
+    border-bottom: 2px ridge #bbb;
+
+    background:
+      linear-gradient(
+        90deg,
+        #ff9bcb,
+        #d3d3d3
+      );
+
+    color: #333;
+
+    font-family:
+      "MS PGothic",
+      "MS Gothic",
+      monospace;
+
+    font-size: 12px;
+
+    font-weight: bold;
+  }
+
+  .chat-body {
+    padding: 10px;
+
+    background: #f5f5f5;
+  }
+
+  .message {
+    margin: 0 0 10px;
+
+    padding: 6px 8px;
+
+    border: 1px solid #aaa;
+
+    background: #fff;
+  }
+
+  .message:last-child {
+    margin-bottom: 0;
+  }
+
+  .message.human {
+    margin-right: 28px;
+  }
+
+  .message.lobster {
+    margin-left: 28px;
+
+    background: #fffbe1;
+  }
+
+  .speaker {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #666;
+
+    font-family:
+      monospace;
+
+    font-size: 10px;
+  }
+
+  .message p {
+    margin: 0;
+
+    font-size: 12px;
+  }
+
+
+  /* =========================
+     假輸入區
+     ========================= */
+
+  .chat-input {
+    display: grid;
+
+    grid-template-columns:
+      1fr
+      auto;
+
+    gap: 5px;
+
+    padding: 7px;
+
+    border-top: 2px ridge #bbb;
+
+    background: #ccc;
+  }
+
+  .chat-input input,
+  .chat-input button {
+    font-family:
+      "MS PGothic",
+      "MS Gothic",
+      Arial,
+      sans-serif;
+
+    font-size: 11px;
+  }
+
+  .chat-input input {
+    min-width: 0;
+
+    padding: 4px;
+
+    border: 2px inset #eee;
+
+    background: #eee;
+  }
+
+  .chat-input button {
+    padding: 3px 9px;
+
+    border: 2px outset #eee;
+
+    background: #d3d3d3;
+  }
+
+  .chat-input input:disabled,
+  .chat-input button:disabled {
+    color: #777;
+
+    cursor: not-allowed;
+  }
+
+
+  /* =========================
+     上下頁
+     ========================= */
+
+  .log-navigation {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 40px;
+
+    padding-top: 10px;
+
+    border-top: 1px dotted #777;
+  }
+
+
+  @media (max-width: 600px) {
+    .message.human {
+      margin-right: 12px;
+    }
+
+    .message.lobster {
+      margin-left: 12px;
+    }
+
+    .chat-input {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

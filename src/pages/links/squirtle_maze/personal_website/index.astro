@@ -1,0 +1,632 @@
+---
+import MazeLayout from "../../../../layouts/MazeLayout.astro";
+---
+
+<MazeLayout title="更新履歴" corruption={1}>
+
+  <section class="personal-site">
+
+    <p class="breadcrumb">
+      LINK ＞ 更新履歴
+    </p>
+
+    <div class="site-title">
+      <h2>★ 更新履歴(　o=^•ェ•)o　┏━┓ ★</h2>
+      <p>
+        人形、サイト更新、日常の記録など。
+      </p>
+    </div>
+
+    <hr />
+
+    <!-- =========================================
+         娃照
+         先預留這個檔名。
+         換照片只要替換 public 裡面的圖片即可。
+         ========================================= -->
+
+    <figure class="doll-photo">
+      <img
+        src="/assets/maze/cursed/personal_doll.webp"
+        alt="管理人の人形"
+      />
+
+      <figcaption>
+        最近よく撮っている子です。
+      </figcaption>
+    </figure>
+
+
+    <!-- =========================================
+         管理介面（？）
+
+         看起來可以操作。
+         實際上什麼都不准操作。
+         ========================================= -->
+
+    <div class="admin-panel">
+
+      <div class="admin-title">
+        ◆ ARTICLE CONTROL ◆
+      </div>
+
+      <div class="admin-buttons">
+
+        <button
+          type="button"
+          class="forbidden-button"
+        >
+          ＋ 新增文章
+        </button>
+
+        <button
+          type="button"
+          class="forbidden-button"
+        >
+          － 刪除文章
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <h3>◆ 更新記録 ◆</h3>
+
+    <p class="archive-note">
+      古いものから順番に並んでいます。
+    </p>
+
+
+    <!-- =========================================
+         log01 ～ log06
+
+         日期先故意不寫死。
+         等故事時間線確定後再補。
+         ========================================= -->
+
+    <div class="log-list">
+
+      <article class="log-item">
+        <span class="log-number">01</span>
+
+        <div>
+          <a href="/links/squirtle_maze/personal_website/log01/">
+            サイト修正記録 01
+          </a>
+
+          <p>
+            細かいバグ修正など。
+          </p>
+        </div>
+      </article>
+
+
+      <article class="log-item">
+        <span class="log-number">02</span>
+
+        <div>
+          <a href="/links/squirtle_maze/personal_website/log02/">
+            サイト修正記録 02
+          </a>
+
+          <p>
+            ページ整理と画像の更新。
+          </p>
+        </div>
+      </article>
+
+
+      <article class="log-item">
+        <span class="log-number">03</span>
+
+        <div>
+          <a href="/links/squirtle_maze/personal_website/log03/">
+            サイト修正記録 03
+          </a>
+
+          <p>
+            写真ファイルについて。
+          </p>
+        </div>
+      </article>
+
+
+      <article class="log-item">
+        <span class="log-number">04</span>
+
+        <div>
+          <a href="/links/squirtle_maze/personal_website/log04/">
+            サイト修正記録 04
+          </a>
+
+          <p>
+            削除した画像について。
+          </p>
+        </div>
+      </article>
+
+
+      <article class="log-item">
+        <span class="log-number">05</span>
+
+        <div>
+          <a href="/links/squirtle_maze/personal_website/log05/">
+            サイト修正記録 05
+          </a>
+
+          <p>
+            管理記録。
+          </p>
+        </div>
+      </article>
+
+
+      <article class="log-item">
+        <span class="log-number">06</span>
+
+        <div>
+          <a href="/links/squirtle_maze/personal_website/log06/">
+            サイト修正記録 06
+          </a>
+
+          <p>
+            ..........
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+
+    <hr />
+
+    <div class="old-footer">
+
+      <p>
+        管理人：傑ニ
+      </p>
+
+      <p>
+        <a href="/links/squirtle_maze/">
+          ← LINKへ戻る
+        </a>
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================
+       假管理視窗
+
+       不管新增還是刪除，都只有：
+       「別亂動」
+
+       不是真的 browser alert，
+       所以可以刻意做成 Win98 小視窗。
+       ========================================= -->
+
+  <div
+    id="dont-touch-dialog"
+    class="fake-dialog"
+    hidden
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="dont-touch-title"
+  >
+
+    <div class="dialog-window">
+
+      <div class="dialog-title">
+        <span id="dont-touch-title">警告</span>
+
+        <button
+          type="button"
+          id="dialog-x"
+          aria-label="關閉"
+        >
+          ×
+        </button>
+      </div>
+
+      <div class="dialog-body">
+
+        <div
+          class="warning-icon"
+          aria-hidden="true"
+        >
+          ⚠
+        </div>
+
+        <p>
+          別亂動
+        </p>
+
+      </div>
+
+      <div class="dialog-actions">
+
+        <button
+          type="button"
+          id="dialog-ok"
+        >
+          OK
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</MazeLayout>
+
+
+<script>
+  const dialog =
+    document.querySelector("#dont-touch-dialog");
+
+  const forbiddenButtons =
+    document.querySelectorAll(".forbidden-button");
+
+  const closeButtons = [
+    document.querySelector("#dialog-x"),
+    document.querySelector("#dialog-ok"),
+  ];
+
+
+  /*
+   * 不論按「新增」還是「刪除」，
+   * 網站都不准人類碰。
+   */
+  forbiddenButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (!(dialog instanceof HTMLElement)) return;
+
+      dialog.hidden = false;
+    });
+  });
+
+
+  closeButtons.forEach((button) => {
+    button?.addEventListener("click", () => {
+      if (!(dialog instanceof HTMLElement)) return;
+
+      dialog.hidden = true;
+    });
+  });
+
+
+  /*
+   * 點視窗外面也可以關掉。
+   *
+   * 現階段它只是脾氣差，
+   * 還沒有真的把訪客困住。
+   */
+  dialog?.addEventListener("click", (event) => {
+    if (event.target !== dialog) return;
+
+    if (dialog instanceof HTMLElement) {
+      dialog.hidden = true;
+    }
+  });
+</script>
+
+
+<style>
+  .personal-site {
+    line-height: 1.7;
+  }
+
+  .breadcrumb {
+    margin-bottom: 20px;
+
+    color: #666;
+
+    font-size: 11px;
+  }
+
+  .site-title {
+    text-align: center;
+  }
+
+  .site-title h2 {
+    margin-bottom: 5px;
+  }
+
+
+  /* =========================
+     娃照
+     ========================= */
+
+  .doll-photo {
+    width: min(430px, 92%);
+
+    margin: 25px auto;
+
+    padding: 8px;
+
+    border: 4px ridge #ddd;
+
+    background: #eee;
+
+    text-align: center;
+  }
+
+  .doll-photo img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    border: 1px solid #777;
+  }
+
+  .doll-photo figcaption {
+    margin-top: 7px;
+
+    font-size: 11px;
+
+    color: #555;
+  }
+
+
+  /* =========================
+     假後台
+     ========================= */
+
+  .admin-panel {
+    width: min(500px, 95%);
+
+    margin: 30px auto;
+
+    border: 3px outset #ddd;
+
+    background: #cfcfcf;
+  }
+
+  .admin-title {
+    padding: 3px 6px;
+
+    background: #ff91c8;
+
+    color: #fff;
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    font-weight: bold;
+  }
+
+  .admin-buttons {
+    display: flex;
+
+    gap: 8px;
+
+    padding: 10px;
+  }
+
+  .admin-buttons button {
+    padding: 5px 12px;
+
+    border: 3px outset #eee;
+
+    background: #ddd;
+
+    font-family:
+      "MS PGothic",
+      "MS Gothic",
+      Arial,
+      sans-serif;
+
+    cursor: pointer;
+  }
+
+  .admin-buttons button:active {
+    border-style: inset;
+  }
+
+
+  /* =========================
+     LOG 列表
+     ========================= */
+
+  .archive-note {
+    color: #777;
+
+    font-size: 11px;
+  }
+
+  .log-list {
+    margin: 18px 0 30px;
+
+    border-top: 1px dotted #777;
+  }
+
+  .log-item {
+    display: grid;
+
+    grid-template-columns:
+      42px
+      1fr;
+
+    gap: 10px;
+
+    padding: 12px 5px;
+
+    border-bottom: 1px dotted #777;
+  }
+
+  .log-number {
+    display: grid;
+
+    width: 34px;
+    height: 34px;
+
+    border: 2px inset #ddd;
+
+    place-items: center;
+
+    background: #ccc;
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    font-weight: bold;
+  }
+
+  .log-item a {
+    font-weight: bold;
+  }
+
+  .log-item p {
+    margin: 3px 0 0;
+
+    color: #666;
+
+    font-size: 11px;
+  }
+
+
+  .old-footer {
+    margin-top: 25px;
+
+    text-align: center;
+
+    font-size: 11px;
+  }
+
+
+  /* =========================
+     「別亂動」
+     ========================= */
+
+  .fake-dialog[hidden] {
+    display: none;
+  }
+
+  .fake-dialog {
+    position: fixed;
+
+    z-index: 999999;
+
+    inset: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    background:
+      rgba(0, 0, 0, 0.25);
+  }
+
+  .dialog-window {
+    width: min(310px, calc(100% - 30px));
+
+    border: 3px outset #eee;
+
+    background: #c0c0c0;
+
+    box-shadow:
+      5px 5px 0
+      rgba(0, 0, 0, 0.45);
+  }
+
+  .dialog-title {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 3px 4px 3px 7px;
+
+    background:
+      linear-gradient(
+        90deg,
+        #000080,
+        #1084d0
+      );
+
+    color: white;
+
+    font-weight: bold;
+  }
+
+  .dialog-title button {
+    width: 22px;
+    height: 20px;
+
+    padding: 0;
+
+    border: 2px outset #eee;
+
+    background: #c0c0c0;
+
+    color: #000;
+
+    font-weight: bold;
+
+    line-height: 14px;
+
+    cursor: pointer;
+  }
+
+  .dialog-body {
+    display: flex;
+
+    min-height: 90px;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    padding: 15px;
+  }
+
+  .dialog-body p {
+    margin: 0;
+
+    font-size: 16px;
+
+    font-weight: bold;
+  }
+
+  .warning-icon {
+    font-size: 30px;
+  }
+
+  .dialog-actions {
+    padding: 0 15px 15px;
+
+    text-align: center;
+  }
+
+  .dialog-actions button {
+    min-width: 80px;
+
+    padding: 3px 15px;
+
+    border: 3px outset #eee;
+
+    background: #c0c0c0;
+
+    cursor: pointer;
+  }
+
+  .dialog-actions button:active {
+    border-style: inset;
+  }
+
+
+  @media (max-width: 600px) {
+    .admin-buttons {
+      flex-direction: column;
+    }
+  }
+</style>
